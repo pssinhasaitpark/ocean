@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "routes": [
+    {
+      "src": "/api.php",
+      "methods": ["GET", "POST", "OPTIONS"],
+      "dest": "/api.php"
+    }
+  ]
+}
