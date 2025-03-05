@@ -2,9 +2,9 @@
   "version": 2,
   "routes": [
     {
-      "src": "/api.php",
-      "methods": ["GET", "POST", "OPTIONS"],
-      "dest": "/api.php"
+      "src": "/(.*)",
+      "dest": "/api.php",
+      "methods": ["GET", "POST", "OPTIONS"]
     }
   ]
 }
