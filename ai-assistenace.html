@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="hi">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>AI Mode — Feature Summary (Property App)</title>
+    <style>
+        :root{
+          --bg:#f6f8fb; --card:#ffffff; --muted:#6b7280; --accent:#0ea5a4; --accent-2:#7c3aed;
+          --success:#16a34a; --border: #e6e9ef;
+          font-family: Inter, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+        body{margin:0;background:var(--bg);color:#0f1724;padding:28px;}
+        .wrap{max-width:900px;margin:0 auto;}
+        header{display:flex;align-items:center;gap:14px;margin-bottom:18px}
+        header .logo{
+          width:56px;height:56px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent-2));
+          display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:20px;
+          box-shadow:0 8px 20px rgba(16,24,40,0.08);
+        }
+        h1{margin:0;font-size:20px}
+        p.lead{color:var(--muted);margin-top:6px;margin-bottom:18px}
+        .card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:18px;margin-bottom:14px;box-shadow:0 6px 18px rgba(11,15,35,0.03)}
+        .features ul{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
+        .feature-item{display:flex;gap:10px;align-items:center;padding:10px;border-radius:8px;background:linear-gradient(180deg, rgba(14,165,164,0.03), rgba(124,58,237,0.01));}
+        .tick{width:36px;height:36px;border-radius:9px;background:var(--success);color:white;display:flex;align-items:center;justify-content:center;font-weight:700}
+        table{width:100%;border-collapse:collapse;margin-top:8px}
+        th,td{padding:10px 8px;border-bottom:1px solid var(--border);text-align:left}
+        th{background:linear-gradient(90deg,#fbfdfe,#f7fbfc);font-weight:600}
+        .status-true{color:var(--success);font-weight:700}
+        .list-nice{padding-left:18px;margin:6px 0}
+        .footnote{color:var(--muted);font-size:13px;margin-top:10px}
+        .badge{display:inline-block;background:linear-gradient(90deg, rgba(124,58,237,0.09), rgba(14,165,164,0.06));padding:6px 10px;border-radius:999px;color:var(--accent-2);font-weight:600;margin-right:8px}
+        pre{background:#0b1220;color:#dbeafe;padding:12px;border-radius:8px;overflow:auto;font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", monospace;font-size:13px}
+        @media (max-width:520px){ .features ul{grid-template-columns:repeat(1,1fr)} }
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <header>
+        <div class="logo">AI</div>
+        <div>
+            <h1>AI Mode — Feature Summary</h1>
+            <p class="lead">Implementation plan for “AI Mode” in your Property App (Android Java) — concise and ready to integrate.</p>
+        </div>
+    </header>
+
+    <section class="card">
+        <span class="badge">Scope</span>
+        <p class="footnote">You want an “AI Mode” similar to MagicBricks with chat & voice capabilities, waveform animations, and backend AI integration.</p>
+    </section>
+
+    <section class="card features">
+        <h2 style="margin-top:0">Core UI / UX</h2>
+        <ul>
+            <li class="feature-item"><div class="tick">✔</div><div>Floating AI button</div></li>
+            <li class="feature-item"><div class="tick">✔</div><div>Opens a bottom sheet or full-screen modal</div></li>
+            <li class="feature-item"><div class="tick">✔</div><div>Two modes: Chat Mode + Voice Mode</div></li>
+            <li class="feature-item"><div class="tick">✔</div><div>Voice listening animation</div></li>
+            <li class="feature-item"><div class="tick">✔</div><div>AI Assistant avatar with text response</div></li>
+            <li class="feature-item"><div class="tick">✔</div><div>Reads user voice → sends to backend AI → shows AI reply</div></li>
+            <li class="feature-item"><div class="tick">✔</div><div>Works in Android Java</div></li>
+        </ul>
+    </section>
+
+    <section class="card">
+        <h2 style="margin-top:0">This Implementation Guide Includes</h2>
+        <ol class="list-nice">
+            <li><strong>UI Layouts (XML)</strong>
+                <ul class="list-nice">
+                    <li>Floating AI button</li>
+                    <li>BottomSheet for AI</li>
+                    <li>Voice Mode layout</li>
+                    <li>Chat Mode layout</li>
+                </ul>
+            </li>
+            <li><strong>Activities + Fragments Java Code</strong>
+                <ul class="list-nice">
+                    <li>BottomSheetDialogFragment</li>
+                    <li>Speech Recognizer</li>
+                    <li>Send text to your AI API (OpenAI / Gemini / Custom)</li>
+                    <li>Display AI response</li>
+                </ul>
+            </li>
+            <li><strong>Animations</strong>
+                <ul class="list-nice">
+                    <li>Voice waveform animation</li>
+                    <li>Typing animation</li>
+                </ul>
+            </li>
+        </ol>
+        <p class="footnote">Everything above is covered and marked ready to integrate with your property logic.</p>
+    </section>
+
+    <section class="card">
+        <h2 style="margin-top:0">Feature Status</h2>
+        <table>
+            <thead>
+            <tr><th>Feature</th><th>Status</th></tr>
+            </thead>
+            <tbody>
+            <tr><td>Floating AI button</td><td class="status-true">✔</td></tr>
+            <tr><td>AI bottom sheet</td><td class="status-true">✔</td></tr>
+            <tr><td>Chat mode</td><td class="status-true">✔</td></tr>
+            <tr><td>Voice mode</td><td class="status-true">✔</td></tr>
+            <tr><td>Voice-to-text recognition</td><td class="status-true">✔</td></tr>
+            <tr><td>Send query to AI API</td><td class="status-true">✔</td></tr>
+            <tr><td>Show AI response</td><td class="status-true">✔</td></tr>
+            <tr><td>TTS (AI speaks back)</td><td class="status-true">✔</td></tr>
+            <tr><td>Ready to integrate with your property logic</td><td class="status-true">✔</td></tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section class="card">
+        <h2 style="margin-top:0">Polish & Extras</h2>
+        <ul class="list-nice">
+            <li>✔ Full UI design (like MagicBricks)</li>
+            <li>✔ Avatar animation</li>
+            <li>✔ Waveform voice animation</li>
+            <li>✔ Property filters using AI</li>
+            <li>✔ “Suggested Properties” using AI intelligence</li>
+        </ul>
+    </section>
+
+    <footer style="text-align:center;margin-top:18px;color:var(--muted);font-size:13px">
+        Generated HTML summary — copy/paste into your docs or share with your Android team.
+    </footer>
+</div>
+</body>
+</html>
