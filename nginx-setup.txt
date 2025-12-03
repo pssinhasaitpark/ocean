@@ -1,0 +1,78 @@
+Nginx (pronounced as “Engine-X”) is an open source web server that is often used as reverse proxy or HTTP cache. It is available for Linux for free.
+
+https://ubuntu.com/tutorials/install-and-configure-nginx#1-overview
+
+
+
+
+To install and configure Nginx on Ubuntu, follow these steps: 
+1. Install Nginx: 
+First, update your package lists and install Nginx using apt: 
+sudo apt update
+sudo apt install nginx
+
+2. Adjust the Firewall: 
+If you are using UFW (Uncomplicated Firewall), you need to allow Nginx traffic: 
+sudo ufw app list
+
+This will list available Nginx profiles. Choose the appropriate profile (e.g., Nginx Full for both HTTP and HTTPS, or Nginx HTTP for only HTTP) and enable it: 
+sudo ufw allow 'Nginx Full'
+sudo ufw enable
+sudo ufw status
+
+3. Verify Nginx Installation: 
+Nginx should start automatically after installation. Verify its status: 
+systemctl status nginx
+
+Then, open your web browser and navigate to http://your_server_ip. You should see the Nginx welcome page, confirming a successful installation. 
+4. Basic Configuration (Server Blocks): 
+For hosting multiple domains or custom configurations, you will use Nginx server blocks (similar to Apache virtual hosts). 
+
+• Create a new configuration file for your domain in /etc/nginx/sites-available/: 
+
+    sudo nano /etc/nginx/sites-available/your_domain
+
+• Add your server block configuration. A basic example for a static website: 
+
+    server {
+        listen 80;
+        listen [::]:80;
+
+        root /var/www/your_domain;
+        index index.html index.htm;
+
+        server_name your_domain www.your_domain;
+
+        location / {
+            try_files $uri $uri/ =404;
+        }
+    }
+
+• Create a symbolic link from sites-available to sites-enabled to activate the server block: 
+
+    sudo ln -s /etc/nginx/sites-available/your_domain /etc/nginx/sites-enabled/
+
+• Test your Nginx configuration for syntax errors: 
+
+    sudo nginx -t
+
+Reload Nginx to apply the changes. 
+    sudo systemctl reload nginx
+
+5. Important Nginx Files and Directories: 
+
+• /etc/nginx/: Nginx configuration directory. 
+• /etc/nginx/nginx.conf: Main Nginx configuration file. 
+• /etc/nginx/sites-available/: Directory for server block configuration files (not yet active). 
+• /etc/nginx/sites-enabled/: Directory for active server block configurations (symlinks to sites-available). 
+• /var/log/nginx/: Nginx access and error logs. 
+• /var/www/html: Default web root directory. 
+
+This provides a fundamental installation and configuration of Nginx on Ubuntu. Further configurations, such as SSL/TLS, reverse proxying, or advanced caching, require additional steps and specific directives within your server blocks. 
+
+AI responses may include mistakes.
+
+
+
+
+

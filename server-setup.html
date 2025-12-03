@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Server Debug Commands (Nginx + Apache + Ports)</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        background: #f5f5f5;
+    }
+    h1 {
+        color: #333;
+    }
+    .block {
+        background: white;
+        padding: 20px;
+        margin-bottom: 20px;
+        border-left: 5px solid #007bff;
+        border-radius: 6px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    pre {
+        background: #222;
+        color: #00ff00;
+        padding: 15px;
+        border-radius: 6px;
+        overflow-x: auto;
+    }
+</style>
+</head>
+<body>
+
+<h1>Linux Server Debug Commands (Nginx / Apache / Port Issues)</h1>
+
+<!-- Block 1 -->
+<div class="block">
+    <h2>1. Test Nginx Configuration</h2>
+    <p>Check if your Nginx config is valid before restarting.</p>
+    <pre>sudo nginx -t</pre>
+</div>
+
+<!-- Block 2 -->
+<div class="block">
+    <h2>2. Restart Nginx Server</h2>
+    <p>Restart Nginx after updating any config files.</p>
+    <pre>sudo systemctl restart nginx</pre>
+</div>
+
+<!-- Block 3 -->
+<div class="block">
+    <h2>3. Stop Apache (httpd)</h2>
+    <p>If Apache is running on port 80/443, stop it to avoid conflicts.</p>
+    <pre>sudo systemctl stop httpd</pre>
+</div>
+
+<!-- Block 4 -->
+<div class="block">
+    <h2>4. Kill Apache Processes (Force Stop)</h2>
+    <p>Kills any remaining Apache processes blocking Nginx.</p>
+    <pre>sudo pkill -f httpd</pre>
+</div>
+
+<!-- Block 5 -->
+<div class="block">
+    <h2>5. Kill Nginx Processes (Force Stop)</h2>
+    <p>Useful when Nginx is half-running or stuck.</p>
+    <pre>sudo pkill -f nginx</pre>
+</div>
+
+<!-- Block 6 -->
+<div class="block">
+    <h2>6. Check Which Process is Using Port 80</h2>
+    <p>Identifies which service blocks Nginx on HTTP (port 80).</p>
+    <pre>sudo lsof -i :80</pre>
+</div>
+
+<!-- Block 7 -->
+<div class="block">
+    <h2>7. Check Which Process is Using Port 443</h2>
+    <p>Finds what is blocking HTTPS (port 443) for Nginx.</p>
+    <pre>sudo lsof -i :443</pre>
+</div>
+
+<!-- Block 8 -->
+<div class="block">
+    <h2>8. Stop and Disable Apache Permanently</h2>
+    <p>Use this when you want to run only Nginx, not Apache.</p>
+    <pre>
+sudo systemctl stop httpd
+sudo systemctl disable httpd
+    </pre>
+</div>
+
+<!-- Block 9 -->
+<div class="block">
+    <h2>9. Start Nginx Cleanly After Killing All Processes</h2>
+    <p>This ensures Nginx starts without port conflicts.</p>
+    <pre>
+sudo systemctl stop nginx
+sudo pkill -f nginx
+sudo systemctl start nginx
+    </pre>
+</div>
+
+<!-- Block 10 -->
+<div class="block">
+    <h2>10. View Nginx Error Logs</h2>
+    <p>Best way to diagnose errors when Nginx fails to start.</p>
+    <pre>sudo journalctl -xeu nginx.service</pre>
+</div>
+
+<!-- Block 11 -->
+<div class="block">
+    <h2>11. Check Active Services (Overview)</h2>
+    <p>Shows what major web services are running.</p>
+    <pre>sudo systemctl status nginx httpd</pre>
+</div>
+
+<!-- Block 12 -->
+<div class="block">
+    <h2>12. List All Nginx Virtual Hosts</h2>
+    <p>Useful when debugging domain conflicts.</p>
+    <pre>ls /etc/nginx/sites-enabled</pre>
+</div>
+
+
+<h1>Linux Server Commands Documentation</h1>
+  <p>All essential commands for managing web servers, services, domains, configuration, and logs.</p>
+
+  <!-- Systemctl Commands -->
+  <div class="block">
+    <h2>1. Restart Any Service</h2>
+    <p>Use this command to restart a service such as Apache, Nginx, PHP, MySQL, Node PM2, etc.</p>
+    <pre><code>sudo systemctl restart &lt;service-name&gt;</code></pre>
+  </div>
+
+  <div class="block">
+    <h2>2. Check Service Status</h2>
+    <p>Verifies if a service is active, inactive, or failed.</p>
+    <pre><code>sudo systemctl status nginx</code></pre>
+  </div>
+
+  <div class="block">
+    <h2>3. View Error Logs for a Service</h2>
+    <p>Shows detailed error logs for troubleshooting.</p>
+    <pre><code>sudo journalctl -xeu nginx.service</code></pre>
+  </div>
+
+  <!-- Apache Config -->
+  <div class="block">
+    <h2>4. List Enabled Apache Sites</h2>
+    <p>Shows all active Apache virtual hosts.</p>
+    <pre><code>ls /etc/apache2/sites-enabled/</code></pre>
+  </div>
+
+  <div class="block">
+    <h2>5. List Apache Configuration Files</h2>
+    <p>Useful to check available configuration files for domains.</p>
+    <pre><code>ls /etc/httpd/conf.d/</code></pre>
+  </div>
+
+  <!-- Document Root -->
+  <div class="block">
+    <h2>6. Check Document Root Path</h2>
+    <p>Verify the active website folder for the domain.</p>
+    <pre><code>ls -ld /home/username/public_html</code></pre>
+  </div>
+
+  <div class="block">
+    <h2>7. List Files of Logged-in User</h2>
+    <p>Useful for checking if public_html exists.</p>
+    <pre><code>ls -a</code></pre>
+  </div>
+
+  <!-- Webuzo -->
+  <div class="block">
+    <h2>8. Webuzo Configuration Directory</h2>
+    <p>Shows where Webuzo stores configuration files.</p>
+    <pre><code>ls /usr/local/webuzo/conf/</code></pre>
+  </div>
+
+  <div class="block">
+    <h2>9. Webuzo Apache Configuration</h2>
+    <p>Shows detailed configuration for domains in Webuzo panel.</p>
+    <pre><code>ls /usr/local/webuzo/conf/webuzo/</code></pre>
+  </div>
+
+  <!-- Enable/Disable Sites -->
+  <div class="block">
+    <h2>10. Enable a Domain (Apache)</h2>
+    <p>Activates site configuration and makes the domain live.</p>
+    <pre><code>sudo a2ensite your-domain.conf</code></pre>
+  </div>
+
+  <div class="block">
+    <h2>11. Disable a Domain (Apache)</h2>
+    <p>Deactivates domain configuration and disables site.</p>
+    <pre><code>sudo a2dissite your-domain.conf</code></pre>
+  </div>
+
+  <div class="block">
+    <h2>12. Reload Apache After Enabling/Disabling</h2>
+    <p>Apache must be reloaded to apply domain configuration changes.</p>
+    <pre><code>sudo systemctl reload apache2</code></pre>
+  </div>
+
+  <div class="block">
+    <h2>13. Restart Apache Completely</h2>
+    <p>Restarts Apache to apply all config updates.</p>
+    <pre><code>sudo systemctl restart apache2</code></pre>
+  </div>
+
+  <!-- HTTPD -->
+  <div class="block">
+    <h2>14. Restart Apache on CentOS/RHEL</h2>
+    <p>Some Linux servers use <code>httpd</code> instead of Apache2.</p>
+    <pre><code>sudo systemctl restart httpd</code></pre>
+  </div>
+
+  <!-- Nginx -->
+  <div class="block">
+    <h2>15. Restart Nginx</h2>
+    <p>Restart Nginx server in case of config updates or downtime.</p>
+    <pre><code>sudo systemctl restart nginx</code></pre>
+  </div>
+
+  <div class="block">
+    <h2>16. Test Nginx Configuration</h2>
+    <p>Use before restart to avoid errors.</p>
+    <pre><code>sudo nginx -t</code></pre>
+  </div>
+
+  <!-- Additional -->
+  <div class="block">
+    <h2>17. Restart PHP-FPM</h2>
+    <p>If PHP is showing errors or website is not loading.</p>
+    <pre><code>sudo systemctl restart php-fpm</code></pre>
+  </div>
+
+  <div class="block">
+    <h2>18. Restart MySQL / MariaDB</h2>
+    <pre><code>sudo systemctl restart mysqld</code></pre>
+  </div>
+
+  <div class="block">
+    <h2>19. Restart Node Apps (PM2)</h2>
+    <pre><code>pm2 restart all</code></pre>
+  </div>
+
+  <div class="block">
+    <h2>20. View PM2 Logs</h2>
+    <pre><code>pm2 logs</code></pre>
+  </div>
+  
+</body>
+</html>
+
