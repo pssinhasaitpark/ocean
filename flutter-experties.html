@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Flutter — 3 Years Experience: Full Q&A</title>
+  <style>
+    body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial;line-height:1.6;color:#111;margin:0;padding:24px;background:#f7fafc}
+    .container{max-width:900px;margin:0 auto;background:#fff;padding:28px;border-radius:12px;box-shadow:0 6px 30px rgba(16,24,40,.08)}
+    h1{font-size:24px;margin-bottom:8px}
+    h2{font-size:18px;margin-top:20px;margin-bottom:8px;color:#0f172a}
+    p{margin:8px 0}
+    pre{background:#0f172a;color:#e6eef8;padding:12px;border-radius:8px;overflow:auto}
+    .section{margin-bottom:18px}
+    ul.qa{list-style:none;padding:0}
+    ul.qa li{margin-bottom:14px;padding:12px;border-radius:8px;background:#f1f5f9}
+    .q{font-weight:700}
+    .a{margin-top:6px}
+    footer{margin-top:20px;font-size:13px;color:#475569}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Flutter — 3 Years Experience: Full Q&A</h1>
+    <p>This page contains both common and advanced Flutter questions with smart answers for 3-year experience level, ideal for interviews and client calls.</p>
+
+    <section class="section">
+      <h2>Common Questions & Answers</h2>
+      <ul class="qa">
+        <li><div class="q">1. Tell me about your Flutter experience.</div><div class="a">I have 3 years of experience in Flutter, developing cross-platform apps for both Android and iOS, proficient in responsive UI, state management, API integration, navigation, notifications, and performance optimization.</div></li>
+        <li><div class="q">2. Which state management approaches have you used?</div><div class="a">I have experience with Provider, Riverpod, Bloc, and setState. I choose based on project complexity.</div></li>
+        <li><div class="q">3. How do you handle API integration?</div><div class="a">I use http or Dio for API calls, handle loading/error states, and structure services for clean code.</div></li>
+        <li><div class="q">4. How do you optimize app performance?</div><div class="a">I use const widgets, avoid unnecessary rebuilds, use efficient lists, cache images, and profile with DevTools.</div></li>
+        <li><div class="q">5. How do you handle navigation?</div><div class="a">Navigator 2.0 for complex apps, Navigator 1.0 for simpler apps, with named routes and deep linking if needed.</div></li>
+        <li><div class="q">6. How do you handle push notifications?</div><div class="a">I use Firebase Cloud Messaging with flutter_local_notifications for foreground and background notifications and navigation on tap.</div></li>
+        <li><div class="q">7. How do you debug Flutter apps?</div><div class="a">Flutter DevTools, debugPrint, logging, and Flutter inspector for performance and layout issues.</div></li>
+        <li><div class="q">8. How do you manage offline data?</div><div class="a">SharedPreferences for small data, SQLite or Hive for structured offline storage, sync when online.</div></li>
+        <li><div class="q">9. How do you handle animations?</div><div class="a">AnimationController, Tween, AnimatedBuilder, AnimatedWidget, Lottie, and Rive for smooth animations.</div></li>
+        <li><div class="q">10. How do you test Flutter apps?</div><div class="a">Unit tests with test, widget tests with flutter_test, and integration tests with integration_test or Flutter Driver.</div></li>
+        <li><div class="q">11. How do you make apps responsive?</div><div class="a">MediaQuery, LayoutBuilder, flutter_screenutil, or responsive_builder to handle different screen sizes and orientations.</div></li>
+        <li><div class="q">12. How do you handle platform-specific code?</div><div class="a">Platform channels for native Android/iOS code when device-specific functionality is needed.</div></li>
+        <li><div class="q">13. How do you handle multiple environments?</div><div class="a">Use .env files with flutter_dotenv or flavor-specific configurations for dev, staging, production.</div></li>
+        <li><div class="q">14. How do you secure sensitive data?</div><div class="a">Flutter Secure Storage, HTTPS for API, and proper token storage/encryption.</div></li>
+        <li><div class="q">15. How do you ensure cross-platform consistency?</div><div class="a">Test on Android/iOS, handle platform differences, use consistent UI widgets.</div></li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2>Advanced / Tricky Questions & Answers</h2>
+      <ul class="qa">
+        <li><div class="q">1. How do you optimize Flutter app performance for complex screens?</div><div class="a">Use const widgets, avoid unnecessary rebuilds, ListView.builder/GridView.builder, cache images, profile with DevTools.</div></li>
+        <li><div class="q">2. How do you reduce app bundle size?</div><div class="a">Remove unused assets/packages, enable ProGuard, deferred loading, compress images, tree shaking for Dart code.</div></li>
+        <li><div class="q">3. How do you handle memory leaks?</div><div class="a">Dispose controllers, listeners, streams, focus nodes, monitor memory usage with DevTools.</div></li>
+        <li><div class="q">4. How do you handle complex animations efficiently?</div><div class="a">AnimationController with TickerProviderStateMixin, AnimatedBuilder, offload heavy computations outside callbacks.</div></li>
+        <li><div class="q">5. How do you implement platform-specific code?</div><div class="a">Use platform channels for native code communication.</div></li>
+        <li><div class="q">6. How do you handle large lists?</div><div class="a">ListView.builder/SliverList, pagination, memoize items with const constructors.</div></li>
+        <li><div class="q">7. How do you manage asynchronous streams and real-time data?</div><div class="a">StreamBuilder, RxDart, handle errors and dispose properly to avoid leaks.</div></li>
+        <li><div class="q">8. How do you secure sensitive data?</div><div class="a">Flutter Secure Storage, HTTPS, proper token storage and encryption.</div></li>
+        <li><div class="q">9. How do you manage multiple environments?</div><div class="a">Flavor configurations, separate entrypoints, flutter_dotenv/config classes for environment-specific variables.</div></li>
+        <li><div class="q">10. How do you debug production crashes not in development?</div><div class="a">Crashlytics/Sentry, reproduce in release builds, check minification, logging and stack traces.</div></li>
+        <li><div class="q">11. How do you handle widget rebuilds and state efficiency?</div><div class="a">Const constructors, split widgets, Provider/Riverpod/Bloc selectively.</div></li>
+        <li><div class="q">12. How do you optimize network requests?</div><div class="a">Caching, debounce/throttle, compress payloads, retry errors efficiently.</div></li>
+        <li><div class="q">13. How do you handle image-heavy apps efficiently?</div><div class="a">cached_network_image, prefetch images, compress assets, use WebP format.</div></li>
+        <li><div class="q">14. How do you implement background services?</div><div class="a">WorkManager for Android, BackgroundFetch/FlutterWorkManager, proper lifecycle handling.</div></li>
+        <li><div class="q">15. How do you implement unit, widget, and integration tests?</div><div class="a">Unit tests with test, widget tests with flutter_test, integration tests with integration_test/Flutter Driver.</div></li>
+      </ul>
+    </section>
+
+    <footer>
+      <p>© 2025 Flutter Expertise — Practice these answers and customize with your project examples for stronger impact.</p>
+    </footer>
+  </div>
+</body>
+</html>
