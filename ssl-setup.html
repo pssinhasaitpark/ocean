@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>NGINX Full Setup Guide – Subdomain + SSL</title>
+<style>
+    body { font-family: Arial, sans-serif; line-height: 1.6; background: #f5f6fa; padding: 20px; }
+    h1, h2 { color: #2c3e50; }
+    code { background: #eee; padding: 4px 6px; border-radius: 4px; }
+    pre { background: #2d2d2d; color: #f8f8f2; padding: 15px; border-radius: 8px; overflow-x: auto; }
+    .box { background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); margin-bottom: 20px; }
+</style>
+</head>
+<body>
+
+<h1>🔥 Complete NGINX + Subdomain + SSL Setup Guide</h1>
+<p>This guide explains how to add a new subdomain, configure NGINX, assign correct folder permissions, and install SSL certificates safely.</p>
+
+<hr/>
+
+<div class="box">
+<h2>1️⃣ Create Subdomain (Webuzo Panel)</h2>
+<p>Go to:</p>
+<p><b>Webuzo → Domains → Add Subdomain</b></p>
+
+Example:
+<ul>
+  <li>Subdomain: <code>madhav-web</code></li>
+  <li>Path: <code>/home/USERNAME/public_html/madhav-web</code></li>
+</ul>
+</div>
+
+<div class="box">
+<h2>2️⃣ Assign Correct Folder Permissions</h2>
+
+<p>Run these commands:</p>
+
+<pre>
+chmod 755 /home/USERNAME/
+chmod 755 /home/USERNAME/public_html
+chmod 755 /home/USERNAME/public_html/madhav-web
+</pre>
+
+<p>Replace <code>USERNAME</code> with your actual Linux user.</p>
+</div>
+
+<div class="box">
+<h2>3️⃣ Create/Update NGINX Config File</h2>
+
+<p>Location:</p>
+<code>/etc/nginx/sites-enabled/madhav-web</code>
+
+<p>Use this template:</p>
+
+<pre>
+# Redirect HTTP → HTTPS
+server {
+    listen 80;
+    server_name madhav-web.example.com www.madhav-web.example.com;
+    return 301 https://madhav-web.example.com$request_uri;
+}
+
+# Main HTTPS Server
+server {
+    listen 443 ssl;
+    server_name madhav-web.example.com www.madhav-web.example.com;
+
+    # SSL Paths (Will be created after certbot)
+    ssl_certificate     /etc/letsencrypt/live/madhav-web.example.com/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/madhav-web.example.com/privkey.pem;
+    include /etc/letsencrypt/options-ssl-nginx.conf;
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
+
+    root /home/USERNAME/public_html/madhav-web;
+    index index.html index.php;
+
+    location / {
+        try_files $uri $uri/ /index.html =404;
+    }
+}
+</pre>
+
+<p>Replace:</p>
+<ul>
+  <li><code>madhav-web.example.com</code> → your subdomain</li>
+  <li><code>USERNAME</code> → your server username</li>
+</ul>
+</div>
+
+<div class="box">
+<h2>4️⃣ Test NGINX Config</h2>
+
+<pre>
+sudo nginx -t
+</pre>
+
+<p>You should see:</p>
+<code>nginx: configuration file ... test is successful</code>
+</div>
+
+<div class="box">
+<h2>5️⃣ Restart or Start NGINX Safely</h2>
+
+<pre>
+sudo systemctl start nginx
+sudo systemctl restart nginx
+</pre>
+</div>
+
+<div class="box">
+<h2>6️⃣ Install SSL Certificate</h2>
+
+<p>Now run Certbot:</p>
+
+<pre>
+sudo certbot --nginx -d madhav-web.example.com -d www.madhav-web.example.com
+</pre>
+
+<p>Certbot will automatically:</p>
+<ul>
+  <li>Create SSL folders</li>
+  <li>Update nginx config</li>
+  <li>Reload nginx</li>
+</ul>
+</div>
+
+<div class="box">
+<h2>7️⃣ Auto-Renew SSL</h2>
+
+<p>Certbot auto-renews every 60 days. Test manually:</p>
+
+<pre>
+sudo certbot renew --dry-run
+</pre>
+</div>
+
+<div class="box">
+<h2>8️⃣ Check NGINX Service</h2>
+
+<pre>
+sudo systemctl status nginx
+</pre>
+</div>
+
+<hr/>
+
+<h2>🎉 Done – Your Subdomain is Live with SSL!</h2>
+<p>You can now safely reuse this guide for any new domain/subdomain.</p>
+
+</body>
+</html>
