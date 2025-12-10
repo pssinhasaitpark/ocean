@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Mobile Apps Portfolio — PS</title>
+  <meta name="description" content="Portfolio of mobile apps (Shopify, Flutter, Services) with links to Play Store / APKPure." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0f1724;
+      --card:#0b1220;
+      --muted:#94a3b8;
+      --accent:#06b6d4;
+      --glass: rgba(255,255,255,0.03);
+      color-scheme: dark;
+    }
+    html,body{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;}
+    body{
+      background: linear-gradient(180deg, #071024 0%, #071428 60%);
+      color:#e6eef6;padding:32px;
+      -webkit-font-smoothing:antialiased;
+    }
+    .container{max-width:1100px;margin:0 auto;}
+    header{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:28px}
+    h1{font-size:20px;margin:0}
+    p.lead{margin:0;color:var(--muted);font-size:14px}
+    .controls{display:flex;gap:8px;align-items:center}
+    .btn{
+      background:var(--glass);border:1px solid rgba(255,255,255,0.04);
+      color:inherit;padding:8px 12px;border-radius:10px;font-weight:600;cursor:pointer;
+      transition:transform .12s, box-shadow .12s;
+    }
+    .btn:hover{transform:translateY(-3px);box-shadow:0 6px 18px rgba(2,6,23,0.6)}
+    .btn.primary{background:linear-gradient(90deg, rgba(6,182,212,0.12), rgba(56,189,248,0.08));border:1px solid rgba(6,182,212,0.18)}
+    .filter-bar{display:flex;gap:8px;margin:18px 0 26px;flex-wrap:wrap}
+    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
+    .card{
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.03));
+      border:1px solid rgba(255,255,255,0.03);
+      padding:14px;border-radius:12px;backdrop-filter: blur(6px);
+      display:flex;flex-direction:column;gap:12px;min-height:160px;
+    }
+    .card .meta{display:flex;gap:12px;align-items:center}
+    .logo{
+      width:64px;height:64px;border-radius:10px;background:linear-gradient(135deg,#07172a,#07203a);
+      display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--accent);
+      border:1px solid rgba(255,255,255,0.02);font-size:13px;
+    }
+    .title{font-weight:700;font-size:15px;margin:0}
+    .desc{margin:0;color:var(--muted);font-size:13px}
+    .tags{display:flex;gap:8px;flex-wrap:wrap}
+    .tag{font-size:12px;padding:6px 8px;border-radius:999px;background:rgba(255,255,255,0.02);color:var(--muted);border:1px solid rgba(255,255,255,0.02)}
+    .card-footer{display:flex;gap:8px;margin-top:auto;align-items:center}
+    .link{
+      text-decoration:none;padding:8px 10px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);
+      background:transparent;font-weight:600;font-size:13px;color:inherit;display:inline-flex;gap:8px;align-items:center;
+    }
+    .badge{font-size:12px;padding:6px 8px;border-radius:8px;background:rgba(6,182,212,0.08);color:var(--accent);border:1px solid rgba(6,182,212,0.12)}
+    footer{margin-top:28px;color:var(--muted);font-size:13px;text-align:center}
+    /* small */
+    @media (max-width:520px){
+      header{flex-direction:column;align-items:flex-start;gap:8px}
+      .logo{width:56px;height:56px}
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div>
+        <h1>Kabs / PS — Apps Portfolio</h1>
+        <p class="lead">Selected mobile apps (store links, platform, and short descriptions). Click any card to open the app page.</p>
+      </div>
+      <div class="controls">
+        <button class="btn" onclick="openAll()">Open all</button>
+        <button class="btn primary" onclick="showFilter('all')">Show all</button>
+      </div>
+    </header>
+
+    <nav class="filter-bar" aria-label="Filter apps by type">
+      <button class="btn" onclick="showFilter('all')">All</button>
+      <button class="btn" onclick="showFilter('shopify')">Shopify APIs</button>
+      <button class="btn" onclick="showFilter('service')">Service & Shopping</button>
+      <button class="btn" onclick="showFilter('flutter')">Flutter</button>
+    </nav>
+
+    <main>
+      <section class="grid" id="portfolio">
+        <!-- App Card 1: Kabs FitFactory (Shopify / APKPure) -->
+        <article class="card" data-type="shopify">
+          <div class="meta">
+            <div class="logo" aria-hidden="true">KF</div>
+            <div style="flex:1">
+              <div style="display:flex;align-items:center;gap:8px">
+                <h3 class="title">Kabs FitFactory</h3>
+                <span class="badge">Shopify APIs</span>
+              </div>
+              <p class="desc">Mobile app integrated with Shopify APIs — fitness & e-commerce. APKPure listing provided.</p>
+            </div>
+          </div>
+          <div class="tags" aria-hidden="true">
+            <span class="tag">Store: APKPure</span>
+            <span class="tag">Type: Shopping</span>
+          </div>
+          <div class="card-footer">
+            <a class="link" href="https://apkpure.net/kabs-fitfactory/com.ps.kabs" target="_blank" rel="noopener noreferrer">
+              View on APKPure ↗
+            </a>
+            <a class="link" href="https://apkpure.net/kabs-fitfactory/com.ps.kabs" target="_blank" rel="noopener noreferrer" style="margin-left:auto">
+              Copy link
+            </a>
+          </div>
+        </article>
+
+        <!-- App Card 2: Anshul Bijoux (Shopify / Play Store) -->
+        <article class="card" data-type="shopify">
+          <div class="meta">
+            <div class="logo" aria-hidden="true">AB</div>
+            <div style="flex:1">
+              <div style="display:flex;align-items:center;gap:8px">
+                <h3 class="title">Anshul Bijoux</h3>
+                <span class="badge">Shopify APIs</span>
+              </div>
+              <p class="desc">Shop the latest jewellery designs online — connected with Shopify APIs for product & checkout flows.</p>
+            </div>
+          </div>
+          <div class="tags" aria-hidden="true">
+            <span class="tag">Store: Google Play</span>
+            <span class="tag">Type: Jewellery / E-commerce</span>
+          </div>
+          <div class="card-footer">
+            <a class="link" href="https://play.google.com/store/apps/details?id=com.ps.anshulbijoux" target="_blank" rel="noopener noreferrer">
+              View on Play Store ↗
+            </a>
+            <a class="link" href="https://play.google.com/store/apps/details?id=com.ps.anshulbijoux" target="_blank" rel="noopener noreferrer" style="margin-left:auto">
+              Copy link
+            </a>
+          </div>
+        </article>
+
+        <!-- App Card 3: Electrolife (Service & Shopping / Play Store) -->
+        <article class="card" data-type="service">
+          <div class="meta">
+            <div class="logo" aria-hidden="true">EL</div>
+            <div style="flex:1">
+              <div style="display:flex;align-items:center;gap:8px">
+                <h3 class="title">Electrolife</h3>
+                <span class="badge">Service & Shopping</span>
+              </div>
+              <p class="desc">Service & shopping app providing home services and shopping facilities — bookings & product catalogue.</p>
+            </div>
+          </div>
+          <div class="tags" aria-hidden="true">
+            <span class="tag">Store: Google Play</span>
+            <span class="tag">Type: Services</span>
+          </div>
+          <div class="card-footer">
+            <a class="link" href="https://play.google.com/store/apps/details?id=com.electrolife" target="_blank" rel="noopener noreferrer">
+              View on Play Store ↗
+            </a>
+            <a class="link" href="https://play.google.com/store/apps/details?id=com.electrolife" target="_blank" rel="noopener noreferrer" style="margin-left:auto">
+              Copy link
+            </a>
+          </div>
+        </article>
+
+        <!-- App Card 4: Kirar Dhakad Jeevansathi (Flutter / Play Store) -->
+        <article class="card" data-type="flutter">
+          <div class="meta">
+            <div class="logo" aria-hidden="true">KJ</div>
+            <div style="flex:1">
+              <div style="display:flex;align-items:center;gap:8px">
+                <h3 class="title">Kirar Dhakad Jeevansathi</h3>
+                <span class="badge">Flutter</span>
+              </div>
+              <p class="desc">Marriage / matchmaking app built with Flutter — fast UI and cross-platform support.</p>
+            </div>
+          </div>
+          <div class="tags" aria-hidden="true">
+            <span class="tag">Store: Google Play</span>
+            <span class="tag">Type: Social / Matrimony</span>
+          </div>
+          <div class="card-footer">
+            <a class="link" href="https://play.google.com/store/apps/details?id=com.ps.jivansathigroup" target="_blank" rel="noopener noreferrer">
+              View on Play Store ↗
+            </a>
+            <a class="link" href="https://play.google.com/store/apps/details?id=com.ps.jivansathigroup" target="_blank" rel="noopener noreferrer" style="margin-left:auto">
+              Copy link
+            </a>
+          </div>
+        </article>
+
+      </section>
+    </main>
+
+    <footer>
+      <div>Want edits (different layout, logos, or export to PDF)? Tell me which style and I’ll adapt it.</div>
+    </footer>
+  </div>
+
+  <script>
+    // Simple filter logic
+    function showFilter(type){
+      const cards = document.querySelectorAll('#portfolio .card');
+      if(type === 'all'){
+        cards.forEach(c => c.style.display = 'flex');
+      } else {
+        cards.forEach(c => {
+          const t = c.getAttribute('data-type');
+          c.style.display = (t === type) ? 'flex' : 'none';
+        });
+      }
+      // scroll to grid on filter
+      document.getElementById('portfolio').scrollIntoView({behavior:'smooth', block:'start'});
+    }
+
+    // Open all store links in new tabs (useful for quick QA)
+    function openAll(){
+      const links = Array.from(document.querySelectorAll('#portfolio .card .card-footer a')).filter(a => /http/i.test(a.href));
+      // pick the first store link from each card
+      const unique = [];
+      const seen = new Set();
+      links.forEach(a => {
+        const card = a.closest('.card');
+        if(!seen.has(card)){
+          seen.add(card);
+          unique.push(a.href);
+        }
+      });
+      unique.forEach(href => window.open(href, '_blank'));
+    }
+
+    // Accessibility: keyboard filter shortcut (1-4)
+    document.addEventListener('keydown', (e) => {
+      if(e.key === '1') showFilter('all');
+      if(e.key === '2') showFilter('shopify');
+      if(e.key === '3') showFilter('service');
+      if(e.key === '4') showFilter('flutter');
+    });
+  </script>
+</body>
+</html>

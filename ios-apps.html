@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>iOS App Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+    body {
+        font-family: "Poppins", sans-serif;
+        background: #0b0f19;
+        color: #fff;
+        margin: 0;
+    }
+    header {
+        text-align: center;
+        padding: 1px 5px;
+        background: linear-gradient(135deg, #1a237e, #0d47a1);
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    header h1 {
+        /* font-size: 48px; */
+        font-weight: 700;
+        animation: fadeIn 1.5s ease-in-out;
+    }
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(-20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    header p {
+        opacity: .8;
+        font-size: 18px;
+    }
+    .controls {
+        max-width: 1300px;
+        margin: 20px auto;
+        padding: 10px;
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+    .controls input, .controls select {
+        flex: 1;
+        min-width: 150px;
+        padding: 10px;
+        background: #1f2937;
+        color: #fff;
+        border: 1px solid rgba(255,255,255,0.1);
+        border-radius: 10px;
+        font-family: "Poppins", sans-serif;
+    }
+    .controls input::placeholder {
+        color: #9ca3af;
+    }
+    .grid {
+        max-width: 1300px;
+        margin: 20px auto;
+        padding: 10px;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 20px;
+    }
+    .card {
+        background: #111827;
+        border-radius: 16px;
+        padding: 25px;
+        border: 1px solid rgba(255,255,255,0.06);
+        box-shadow: 0px 6px 20px rgba(0,0,0,0.35);
+        transition: .3s;
+        display: block;
+    }
+    .card:hover {
+        transform: translateY(-8px);
+        border-color: #3ea6ff;
+        box-shadow: 0px 12px 35px rgba(62,166,255,0.5);
+    }
+    .avatar {
+        width: 48px;
+        height: 48px;
+        background: #1e293b;
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: 600;
+        font-size: 18px;
+        color: #a5b4fc;
+        margin-bottom: 10px;
+    }
+    .badge {
+        display: inline-block;
+        padding: 6px 12px;
+        font-size: 12px;
+        border-radius: 8px;
+        background: rgba(0, 200, 255, 0.14);
+        color: #38bdf8;
+        margin-left: 10px;
+        font-weight: 500;
+    }
+    .details {
+        margin: 12px 0;
+        opacity: .85;
+        font-size: 14px;
+        line-height: 1.5;
+    }
+    .tags {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin: 10px 0;
+    }
+    .tag {
+        background: #1f2937;
+        padding: 6px 12px;
+        border-radius: 8px;
+        font-size: 12px;
+        opacity: .8;
+    }
+    .btn-group {
+        display: flex;
+        gap: 10px;
+        margin-top: 18px;
+    }
+    .btn {
+        flex: 1;
+        padding: 10px;
+        background: #1f2937;
+        color: #fff;
+        text-align: center;
+        border-radius: 10px;
+        text-decoration: none;
+        font-size: 14px;
+        transition: .3s;
+        cursor: pointer;
+    }
+    .btn:hover {
+        background: #3ea6ff;
+        color: #000;
+        font-weight: 600;
+    }
+</style>
+</head>
+<body>
+<header>
+    <!-- <h1>iOS App Portfolio</h1> -->
+    <p>A collection of professional iOS apps built using Swift</p>
+</header>
+<div class="controls">
+    <input type="text" id="search" placeholder="Search apps...">
+    <select id="filter-tech">
+        <option value="">All Technologies</option>
+        <option value="iOS">iOS</option>
+    </select>
+    <select id="filter-type">
+        <option value="">All Types</option>
+        <option value="Video Streaming">Video Streaming</option>
+        <option value="Weather App">Weather App</option>
+        <option value="Fitness">Fitness</option>
+        <option value="Ecommerce">Ecommerce</option>
+        <option value="Matrimony">Matrimony</option>
+        <option value="Tools">Tools</option>
+        <option value="Community">Community</option>
+        <option value="Services">Services</option>
+        <option value="Events">Events</option>
+        <option value="Social">Social</option>
+    </select>
+    <select id="filter-store">
+        <option value="">All Stores</option>
+        <option value="App Store">App Store</option>
+    </select>
+</div>
+<div class="grid">
+<!-- ---------------------------- iOS APPS ---------------------------- -->
+<!-- 1. BLF Live -->
+<div class="card">
+    <div class="avatar">BL</div>
+    <h3>BLF Live <span class="badge">iOS</span></h3>
+    <p class="details">Live streaming and video content platform.</p>
+    <div class="tags">
+        <span class="tag">Store: App Store</span>
+        <span class="tag">Type: Video Streaming</span>
+    </div>
+    <div class="btn-group">
+        <a class="btn" href="https://apps.apple.com/us/app/blf-live/id6448539513" target="_blank">View</a>
+        <a class="btn" onclick="copyLink('https://apps.apple.com/us/app/blf-live/id6448539513')">Copy Link</a>
+    </div>
+</div>
+<!-- 2. RW Rain Reminder -->
+<div class="card">
+    <div class="avatar">RR</div>
+    <h3>RW Rain Reminder <span class="badge">iOS</span></h3>
+    <p class="details">Weather forecast & rain alerts with accurate notifications.</p>
+    <div class="tags">
+        <span class="tag">Store: App Store</span>
+        <span class="tag">Type: Weather App</span>
+    </div>
+    <div class="btn-group">
+        <a class="btn" href="https://apps.apple.com/tt/app/rw-rain-reminder/id1602889868" target="_blank">View</a>
+        <a class="btn" onclick="copyLink('https://apps.apple.com/tt/app/rw-rain-reminder/id1602889868')">Copy Link</a>
+    </div>
+</div>
+<!-- 3. Butttalks -->
+<div class="card">
+    <div class="avatar">BT</div>
+    <h3>Butttalks <span class="badge">iOS</span></h3>
+    <p class="details">Social platform for discussions and community engagement.</p>
+    <div class="tags">
+        <span class="tag">Store: App Store</span>
+        <span class="tag">Type: Social</span>
+    </div>
+    <div class="btn-group">
+        <a class="btn" href="https://apps.apple.com/in/app/butttalks/id1562714136" target="_blank">View</a>
+        <a class="btn" onclick="copyLink('https://apps.apple.com/in/app/butttalks/id1562714136')">Copy Link</a>
+    </div>
+</div>
+<!-- 4. Ranka Tents Suppliers -->
+<div class="card">
+    <div class="avatar">RT</div>
+    <h3>Ranka Tents Suppliers <span class="badge">iOS</span></h3>
+    <p class="details">Find and order wedding & event decorative items.</p>
+    <div class="tags">
+        <span class="tag">Store: App Store</span>
+        <span class="tag">Type: Events / Shopping</span>
+    </div>
+    <div class="btn-group">
+        <a class="btn" href="https://apps.apple.com/in/app/ranka-tents-suppliers/id6474994248" target="_blank">View</a>
+        <a class="btn" onclick="copyLink('https://apps.apple.com/in/app/ranka-tents-suppliers/id6474994248')">Copy Link</a>
+    </div>
+</div>
+<!-- 5. Sewadisha 2024 -->
+<div class="card">
+    <div class="avatar">SD</div>
+    <h3>Sewadisha 2024 <span class="badge">iOS</span></h3>
+    <p class="details">Community & social support platform.</p>
+    <div class="tags">
+        <span class="tag">Store: App Store</span>
+        <span class="tag">Type: Community</span>
+    </div>
+    <div class="btn-group">
+        <a class="btn" href="https://apps.apple.com/in/app/sewadisha-2024/id6450584673" target="_blank">View</a>
+        <a class="btn" onclick="copyLink('https://apps.apple.com/in/app/sewadisha-2024/id6450584673')">Copy Link</a>
+    </div>
+</div>
+<!-- 6. World Intellectual Foundation -->
+<div class="card">
+    <div class="avatar">WF</div>
+    <h3>World Intellectual Foundation <span class="badge">iOS</span></h3>
+    <p class="details">Platform for intellectual discussions and knowledge sharing.</p>
+    <div class="tags">
+        <span class="tag">Store: App Store</span>
+        <span class="tag">Type: Community</span>
+    </div>
+    <div class="btn-group">
+        <a class="btn" href="https://apps.apple.com/in/app/world-intellectual-foundation/id6449592843" target="_blank">View</a>
+        <a class="btn" onclick="copyLink('https://apps.apple.com/in/app/world-intellectual-foundation/id6449592843')">Copy Link</a>
+    </div>
+</div>
+<!-- 7. Move It: Moving & Delivery -->
+<div class="card">
+    <div class="avatar">MI</div>
+    <h3>Move It: Moving & Delivery <span class="badge">iOS</span></h3>
+    <p class="details">Book moving and delivery services with ease.</p>
+    <div class="tags">
+        <span class="tag">Store: App Store</span>
+        <span class="tag">Type: Services</span>
+    </div>
+    <div class="btn-group">
+        <a class="btn" href="https://apps.apple.com/in/app/move-it-moving-delivery/id1487797537" target="_blank">View</a>
+        <a class="btn" onclick="copyLink('https://apps.apple.com/in/app/move-it-moving-delivery/id1487797537')">Copy Link</a>
+    </div>
+</div>
+<!-- 8. Move It Helper -->
+<div class="card">
+    <div class="avatar">MH</div>
+    <h3>Move It Helper <span class="badge">iOS</span></h3>
+    <p class="details">Helper app for Move It delivery partners.</p>
+    <div class="tags">
+        <span class="tag">Store: App Store</span>
+        <span class="tag">Type: Services</span>
+    </div>
+    <div class="btn-group">
+        <a class="btn" href="https://apps.apple.com/in/app/move-it-helper/id1488199360" target="_blank">View</a>
+        <a class="btn" onclick="copyLink('https://apps.apple.com/in/app/move-it-helper/id1488199360')">Copy Link</a>
+    </div>
+</div>
+<!-- 9. Sev Bazaar -->
+<div class="card">
+    <div class="avatar">SB</div>
+    <h3>Sev Bazaar <span class="badge">iOS</span></h3>
+    <p class="details">Order Sev & Namkeen from your favorite shops.</p>
+    <div class="tags">
+        <span class="tag">Store: App Store</span>
+        <span class="tag">Type: Food / Marketplace</span>
+    </div>
+    <div class="btn-group">
+        <a class="btn" href="https://apps.apple.com/app/sev-bazaar/id6444580287" target="_blank">View</a>
+        <a class="btn" onclick="copyLink('https://apps.apple.com/app/sev-bazaar/id6444580287')">Copy Link</a>
+    </div>
+</div>
+<!-- 10. Vanvasi Kalyan Ashram -->
+<div class="card">
+    <div class="avatar">VK</div>
+    <h3>Vanvasi Kalyan Ashram <span class="badge">iOS</span></h3>
+    <p class="details">Community platform for Vanvasi Kalyan Ashram.</p>
+    <div class="tags">
+        <span class="tag">Store: App Store</span>
+        <span class="tag">Type: Community</span>
+    </div>
+    <div class="btn-group">
+        <a class="btn" href="https://apps.apple.com/in/app/vanvasi-kalyan-ashram/id6742019079" target="_blank">View</a>
+        <a class="btn" onclick="copyLink('https://apps.apple.com/in/app/vanvasi-kalyan-ashram/id6742019079')">Copy Link</a>
+    </div>
+</div>
+<!-- 11. RSS Malwa Prant -->
+<div class="card">
+    <div class="avatar">RM</div>
+    <h3>RSS Malwa Prant <span class="badge">iOS</span></h3>
+    <p class="details">Community and news platform for RSS Malwa Prant.</p>
+    <div class="tags">
+        <span class="tag">Store: App Store</span>
+        <span class="tag">Type: Community</span>
+    </div>
+    <div class="btn-group">
+        <a class="btn" href="https://apps.apple.com/in/app/rss-malwa-prant/id6740914484" target="_blank">View</a>
+        <a class="btn" onclick="copyLink('https://apps.apple.com/in/app/rss-malwa-prant/id6740914484')">Copy Link</a>
+    </div>
+</div>
+<!-- ---------------------------- END OF APPS ---------------------------- -->
+</div>
+<script>
+function copyLink(url) {
+    navigator.clipboard.writeText(url);
+    alert("Link copied!");
+}
+document.addEventListener('DOMContentLoaded', function() {
+    const search = document.getElementById('search');
+    const filterTech = document.getElementById('filter-tech');
+    const filterType = document.getElementById('filter-type');
+    const filterStore = document.getElementById('filter-store');
+    const cards = document.querySelectorAll('.card');
+    function filterCards() {
+        const searchTerm = search.value.toLowerCase();
+        const techTerm = filterTech.value;
+        const typeTerm = filterType.value;
+        const storeTerm = filterStore.value;
+        cards.forEach(card => {
+            const title = card.querySelector('h3').textContent.toLowerCase();
+            const tech = card.querySelector('.badge').textContent;
+            const type = card.querySelector('.tag:nth-child(2)').textContent.replace('Type: ', '');
+            const store = card.querySelector('.tag:nth-child(1)').textContent.replace('Store: ', '');
+            const matchesSearch = title.includes(searchTerm) || searchTerm === '';
+            const matchesTech = techTerm === '' || tech.includes(techTerm);
+            const matchesType = typeTerm === '' || type.includes(typeTerm);
+            const matchesStore = storeTerm === '' || store.includes(storeTerm);
+            if (matchesSearch && matchesTech && matchesType && matchesStore) {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    }
+    search.addEventListener('input', filterCards);
+    filterTech.addEventListener('change', filterCards);
+    filterType.addEventListener('change', filterCards);
+    filterStore.addEventListener('change', filterCards);
+});
+</script>
+</body>
+</html>
