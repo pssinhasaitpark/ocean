@@ -14,21 +14,56 @@
         color: #2a2a2a;
     }
 
-    h1 {
+    h1, h4 {
         text-align: center;
         font-family: "Playfair Display", serif;
-        margin-top: 40px;
-        font-size: 42px;
         color: #1a3d5d;
-        letter-spacing: 1px;
     }
 
+    h1 { font-size: 42px; margin-top: 40px; }
+    h4 { font-size: 30px; margin-top: 10px; }
+
     .container {
-        max-width: 900px;
-        margin: 40px auto;
+        max-width: 1400px;
+        margin: 20px auto;
         padding: 20px;
     }
 
+    /* Search bar */
+    .search-box {
+        width: 100%;
+        padding: 14px;
+        font-size: 16px;
+        border-radius: 12px;
+        border: 1px solid #bcd7f7;
+        margin-bottom: 20px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+
+    /* FILTER BUTTONS */
+    .filters {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-bottom: 25px;
+    }
+
+    .filter-btn {
+        padding: 8px 14px;
+        background: #ffffff90;
+        border-radius: 10px;
+        border: 1px solid #b7d4f7;
+        cursor: pointer;
+        font-size: 14px;
+        transition: 0.2s;
+    }
+
+    .filter-btn:hover, .filter-btn.active {
+        background: #1a73e8;
+        color: white;
+    }
+
+    /* Card Style */
     .card {
         backdrop-filter: blur(14px);
         background: rgba(255, 255, 255, 0.55);
@@ -37,7 +72,15 @@
         border-radius: 16px;
         border: 1px solid rgba(255,255,255,0.6);
         box-shadow: 0 8px 22px rgba(0,0,0,0.10);
-        transition: transform 0.25s ease, box-shadow 0.25s ease;
+        transition: transform 0.25s ease, box-shadow 0.25s ease, opacity 0.3s;
+    }
+
+    .card.hide {
+        opacity: 0;
+        height: 0;
+        padding: 0;
+        margin: 0;
+        overflow: hidden;
     }
 
     .card:hover {
@@ -68,6 +111,7 @@
         border-radius: 12px;
         border: 1px solid #d1e6ff;
         gap: 10px;
+        flex-wrap: wrap;
     }
 
     .url-text {
@@ -88,83 +132,198 @@
         display: flex;
         align-items: center;
         gap: 6px;
+        white-space: nowrap;
     }
 
-    .copy-btn {
-        background: #1a73e8;
-        color: white;
-    }
+    .copy-btn { background: #1a73e8; color: white; }
+    .copy-btn:hover { background: #0f5ec4; }
 
-    .copy-btn:hover {
-        background: #0f5ec4;
-    }
+    .open-btn { background: #0aa07a; color: white; }
+    .open-btn:hover { background: #067a5c; }
 
-    .open-btn {
-        background: #0aa07a;
-        color: white;
-    }
+    .apk-btn { background: #e8811a; color: white; }
+    .apk-btn:hover { background: #c56b12; }
 
-    .open-btn:hover {
-        background: #067a5c;
-    }
-
-    .icon {
-        font-size: 16px;
+    /* MOBILE */
+    @media (max-width: 550px) {
+        .url-box { flex-direction: column; align-items: stretch; }
+        button { width: 100%; justify-content: center; }
     }
 </style>
+</head>
+
+<body>
+
+<h1>Parkhya Solution Development Portfolio</h1>
+<h4>🌊 Ocean Project Links</h4>
+
+<div class="container">
+
+    <input type="text" id="search" class="search-box" placeholder="🔍 Search projects...">
+
+    <div class="filters">
+        <button class="filter-btn active" onclick="applyFilter('all')">All</button>
+        <button class="filter-btn" onclick="applyFilter('apk')">APK</button>
+        <button class="filter-btn" onclick="applyFilter('ai')">AI</button>
+        <button class="filter-btn" onclick="applyFilter('android')">Android</button>
+        <button class="filter-btn" onclick="applyFilter('ios')">iOS</button>
+        <button class="filter-btn" onclick="applyFilter('react')">React</button>
+        <button class="filter-btn" onclick="applyFilter('backend')">Backend</button>
+        <button class="filter-btn" onclick="applyFilter('server')">DevOps</button>
+        <button class="filter-btn" onclick="applyFilter('ssl')">SSL</button>
+    </div>
+
+    <div id="cardsContainer"></div>
+
+</div>
 
 <script>
+/* ---------------------------------------
+   PROJECT LIST (ADD ANYTHING HERE)
+-----------------------------------------*/
+let projectLinks = [
+    {
+        title: "APK Download Example (HMS App)",
+        desc: "Download HMS Android app (.apk).",
+        url: "https://raw.githubusercontent.com/pssinhasaitpark/ocean/main/HMS_101.apk",
+        tags: ["android", "apk", "mobile"]
+    },
+    {
+        title: "App Feature Demos",
+        desc: "Interactive demos explaining workflows.",
+        url: "https://pssinhasaitpark.github.io/ocean/app-feature-demos.html",
+        tags: ["demos", "frontend"]
+    },
+    {
+        title: "AI Mode",
+        desc: "Interactive demos explaining workflows.",
+        url: "https://pssinhasaitpark.github.io/ocean/ai-mode",
+        tags: ["demos", "frontend","ai"]
+    },
+    {
+        title: "Android Apps",
+        desc: "Interactive Android explaining workflows.",
+        url: "https://pssinhasaitpark.github.io/ocean/android-apps",
+        tags: ["demos", "frontend","android"]
+    },
+    {
+        title: "Backend Setup Guide",
+        desc: "Instructions for backend setup.",
+        url: "https://pssinhasaitpark.github.io/ocean/backend-setup-guide",
+        tags: ["backend", "server"]
+    },
+    {
+        title: "Flutter",
+        desc: "Instructions for Flutter.",
+        url: "https://pssinhasaitpark.github.io/ocean/flutter",
+        tags: ["backend", "server"]
+    },
+    {
+        title: "Flutter Expertise Q&A",
+        desc: "Flutter Expertise Q&A.",
+        url: "https://pssinhasaitpark.github.io/ocean/flutter-experties",
+        tags: ["backend", "server"]
+    },
+    {
+        title: "iOS Apps Showcase",
+        desc: "Showcase of multiple iOS applications.",
+        url: "https://pssinhasaitpark.github.io/ocean/ios-apps.html",
+        tags: ["ios", "mobile"]
+    },
+    {
+        title: "php db connection",
+        desc: "Showcase of php db connection.",
+        url: "https://pssinhasaitpark.github.io/ocean/db.php",
+        tags: ["ios", "mobile"]
+    },
+    {
+        title: "React Expertise",
+        desc: "React development portfolio.",
+        url: "https://pssinhasaitpark.github.io/ocean/react-experties",
+        tags: ["react", "frontend"]
+    },
+    {
+        title: "SSL Setup Guide",
+        desc: "Steps for SSL certificate setup.",
+        url: "https://pssinhasaitpark.github.io/ocean/ssl-setup",
+        tags: ["ssl", "security"]
+    }
+];
+
+/* SORT ALPHABETICALLY */
+projectLinks.sort((a, b) => a.title.localeCompare(b.title));
+
+/* RENDER CARDS */
+const container = document.getElementById("cardsContainer");
+
+function renderCards() {
+    container.innerHTML = "";
+
+    projectLinks.forEach((item, index) => {
+        const isAPK = item.url.toLowerCase().endsWith(".apk");
+
+        const card = document.createElement("div");
+        card.className = "card";
+
+        card.setAttribute("data-tags", item.tags.join(" ").toLowerCase());
+        card.setAttribute("data-title", item.title.toLowerCase());
+
+        card.innerHTML = `
+            <div class="title">${item.title}</div>
+            <div class="desc">${item.desc}</div>
+            <div class="url-box">
+                <div class="url-text" id="url${index}">${item.url}</div>
+
+                <button class="copy-btn" onclick="copyURL('url${index}')">📋 Copy</button>
+
+                ${!isAPK ? 
+                    `<button class="open-btn" onclick="window.open('${item.url}','_blank')">🔗 Open</button>` 
+                    : ""}
+
+                ${isAPK ?
+                    `<button class="apk-btn" onclick="window.open('${item.url}','_blank')">⬇ Download APK</button>` 
+                    : ""}
+            </div>
+        `;
+        container.appendChild(card);
+    });
+}
+
+/* COPY */
 function copyURL(id) {
     const text = document.getElementById(id).innerText;
     navigator.clipboard.writeText(text);
     alert("Copied: " + text);
 }
+
+/* SEARCH */
+document.getElementById("search").addEventListener("input", function () {
+    const q = this.value.toLowerCase();
+
+    document.querySelectorAll(".card").forEach(card => {
+        const text = card.getAttribute("data-title") + card.getAttribute("data-tags");
+        card.classList.toggle("hide", !text.includes(q));
+    });
+});
+
+/* SHORT FILTERS */
+function applyFilter(tag) {
+    document.querySelectorAll(".filter-btn").forEach(btn => btn.classList.remove("active"));
+    event.target.classList.add("active");
+
+    document.querySelectorAll(".card").forEach(card => {
+        const tags = card.getAttribute("data-tags");
+
+        if (tag === "all" || tags.includes(tag)) {
+            card.classList.remove("hide");
+        } else {
+            card.classList.add("hide");
+        }
+    });
+}
+
+renderCards();
 </script>
-</head>
-
-<body>
-
-<h1>🌊 Ocean Project Links</h1>
-
-<div class="container">
-
-    <!-- iOS Apps -->
-    <div class="card">
-        <div class="title">iOS Apps Showcase</div>
-        <div class="desc">Elegant showcase of multiple iOS applications with previews and feature highlights.</div>
-
-        <div class="url-box">
-            <div class="url-text" id="url1">https://pssinhasaitpark.github.io/ocean/ios-apps.html</div>
-            <button class="copy-btn" onclick="copyURL('url1')">📋 Copy</button>
-            <button class="open-btn" onclick="window.open('https://pssinhasaitpark.github.io/ocean/ios-apps.html','_blank')">🔗 Open</button>
-        </div>
-    </div>
-
-    <!-- App Feature Demos -->
-    <div class="card">
-        <div class="title">App Feature Demos</div>
-        <div class="desc">Interactive demonstrations that explain app workflows and UI functionality.</div>
-
-        <div class="url-box">
-            <div class="url-text" id="url2">https://pssinhasaitpark.github.io/ocean/app-feature-demos.html</div>
-            <button class="copy-btn" onclick="copyURL('url2')">📋 Copy</button>
-            <button class="open-btn" onclick="window.open('https://pssinhasaitpark.github.io/ocean/app-feature-demos.html','_blank')">🔗 Open</button>
-        </div>
-    </div>
-
-    <!-- Backend Setup Guide -->
-    <div class="card">
-        <div class="title">Backend Setup Guide</div>
-        <div class="desc">Step-by-step instructions for installing, configuring, and deploying backend services.</div>
-
-        <div class="url-box">
-            <div class="url-text" id="url3">https://pssinhasaitpark.github.io/ocean/backend-setup-guide</div>
-            <button class="copy-btn" onclick="copyURL('url3')">📋 Copy</button>
-            <button class="open-btn" onclick="window.open('https://pssinhasaitpark.github.io/ocean/backend-setup-guide','_blank')">🔗 Open</button>
-        </div>
-    </div>
-
-</div>
 
 </body>
 </html>
