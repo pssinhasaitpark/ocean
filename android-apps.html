@@ -1,80 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>App Portfolio</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-<style>
-    body {
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>App Portfolio</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
         font-family: "Poppins", sans-serif;
         background: #0b0f19;
         color: #fff;
         margin: 0;
-    }
-    header {
+      }
+      header {
         text-align: center;
         padding: 5px 20px;
         background: linear-gradient(135deg, #1a237e, #0d47a1);
-        border-bottom: 1px solid rgba(255,255,255,0.1);
-    }
-    header h1 {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      header h1 {
         font-size: 48px;
         font-weight: 700;
         animation: fadeIn 1.5s ease-in-out;
-    }
-    @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(-20px); }
-        to { opacity: 1; transform: translateY(0); }
-    }
-    header p {
-        opacity: .8;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(-20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      header p {
+        opacity: 0.8;
         font-size: 18px;
-    }
-    .controls {
+      }
+      .controls {
         max-width: 1300px;
         margin: 20px auto;
         padding: 10px;
         display: flex;
         gap: 10px;
         flex-wrap: wrap;
-    }
-    .controls input, .controls select {
+      }
+      .controls input,
+      .controls select {
         flex: 1;
         min-width: 150px;
         padding: 10px;
         background: #1f2937;
         color: #fff;
-        border: 1px solid rgba(255,255,255,0.1);
+        border: 1px solid rgba(255, 255, 255, 0.1);
         border-radius: 10px;
         font-family: "Poppins", sans-serif;
-    }
-    .controls input::placeholder {
+      }
+      .controls input::placeholder {
         color: #9ca3af;
-    }
-    .grid {
+      }
+      .grid {
         max-width: 1300px;
         margin: 20px auto;
         padding: 10px;
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
         gap: 20px;
-    }
-    .card {
+      }
+      .card {
         background: #111827;
         border-radius: 16px;
         padding: 25px;
-        border: 1px solid rgba(255,255,255,0.06);
-        box-shadow: 0px 6px 20px rgba(0,0,0,0.35);
-        transition: .3s;
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.35);
+        transition: 0.3s;
         display: block;
-    }
-    .card:hover {
+      }
+      .card:hover {
         transform: translateY(-8px);
         border-color: #3ea6ff;
-        box-shadow: 0px 12px 35px rgba(62,166,255,0.5);
-    }
-    .avatar {
+        box-shadow: 0px 12px 35px rgba(62, 166, 255, 0.5);
+      }
+      .avatar {
         width: 48px;
         height: 48px;
         background: #1e293b;
@@ -86,8 +96,8 @@
         font-size: 18px;
         color: #a5b4fc;
         margin-bottom: 10px;
-    }
-    .badge {
+      }
+      .badge {
         display: inline-block;
         padding: 6px 12px;
         font-size: 12px;
@@ -96,32 +106,32 @@
         color: #38bdf8;
         margin-left: 10px;
         font-weight: 500;
-    }
-    .details {
+      }
+      .details {
         margin: 12px 0;
-        opacity: .85;
+        opacity: 0.85;
         font-size: 14px;
         line-height: 1.5;
-    }
-    .tags {
+      }
+      .tags {
         display: flex;
         gap: 8px;
         flex-wrap: wrap;
         margin: 10px 0;
-    }
-    .tag {
+      }
+      .tag {
         background: #1f2937;
         padding: 6px 12px;
         border-radius: 8px;
         font-size: 12px;
-        opacity: .8;
-    }
-    .btn-group {
+        opacity: 0.8;
+      }
+      .btn-group {
         display: flex;
         gap: 10px;
         margin-top: 18px;
-    }
-    .btn {
+      }
+      .btn {
         flex: 1;
         padding: 10px;
         background: #1f2937;
@@ -130,29 +140,32 @@
         border-radius: 10px;
         text-decoration: none;
         font-size: 14px;
-        transition: .3s;
+        transition: 0.3s;
         cursor: pointer;
-    }
-    .btn:hover {
+      }
+      .btn:hover {
         background: #3ea6ff;
         color: #000;
         font-weight: 600;
-    }
-</style>
-</head>
-<body>
-<header>
-    <p>A collection of professional apps built using Flutter, Shopify APIs & React Native</p>
-</header>
-<div class="controls">
-    <input type="text" id="search" placeholder="Search apps...">
-    <select id="filter-tech">
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <p>
+        A collection of professional apps built using Flutter, Shopify APIs &
+        React Native
+      </p>
+    </header>
+    <div class="controls">
+      <input type="text" id="search" placeholder="Search apps..." />
+      <select id="filter-tech">
         <option value="">All Technologies</option>
         <option value="Flutter">Flutter</option>
         <option value="React Native">React Native</option>
         <option value="Shopify APIs">Shopify APIs</option>
-    </select>
-    <select id="filter-type">
+      </select>
+      <select id="filter-type">
         <option value="">All Types</option>
         <option value="Video Streaming">Video Streaming</option>
         <option value="Weather App">Weather App</option>
@@ -170,544 +183,856 @@
         <option value="Agri-Business">Agri-Business</option>
         <option value="Cinema">Cinema</option>
         <option value="Marketplace">Marketplace</option>
-    </select>
-    <select id="filter-store">
+      </select>
+      <select id="filter-store">
         <option value="">All Stores</option>
         <option value="Google Play">Google Play</option>
         <option value="APKPure">APKPure</option>
-    </select>
-</div>
-<div class="grid">
-<!-- ---------------------------- ALL APPS BELOW ---------------------------- -->
-<!-- 1. OTT Platform -->
-<div class="card">
-    <div class="avatar">OT</div>
-    <h3>OTT Platform (BLF Prime Video) <span class="badge">Flutter</span></h3>
-    <p class="details">Watch your favorite content anywhere anytime.</p>
-    <div class="tags">
-        <span class="tag">Store: Google Play</span>
-        <span class="tag">Type: Video Streaming</span>
-    </div>
-    <div class="btn-group">
-        <a class="btn" target="_blank" href="https://play.google.com/store/apps/details?id=com.ps.blf_prime_video">View</a>
-        <a class="btn" onclick="copyLink('https://play.google.com/store/apps/details?id=com.ps.blf_prime_video')">Copy Link</a>
-    </div>
-</div>
-<!-- 2. Rain Reminder -->
-<div class="card">
-    <div class="avatar">RR</div>
-    <h3>Rain Reminder <span class="badge">Flutter</span></h3>
-    <p class="details">Weather forecast & rain alerts with accurate notifications.</p>
-    <div class="tags">
-        <span class="tag">Store: Google Play</span>
-        <span class="tag">Type: Weather App</span>
-    </div>
-    <div class="btn-group">
-        <a class="btn" target="_blank" href="https://play.google.com/store/apps/details?id=com.ps.weather">View</a>
-        <a class="btn" onclick="copyLink('https://play.google.com/store/apps/details?id=com.ps.weather')">Copy Link</a>
-    </div>
-</div>
-<!-- 3. Kabs FitFactory -->
-<div class="card">
-    <div class="avatar">KF</div>
-    <h3>Kabs FitFactory <span class="badge">Shopify APIs</span></h3>
-    <p class="details">Fitness & e-commerce app integrated with Shopify APIs.</p>
-    <div class="tags">
-        <span class="tag">Store: APKPure</span>
-        <span class="tag">Type: Fitness / Shopping</span>
-    </div>
-    <div class="btn-group">
-        <a class="btn" href="https://apkpure.net/kabs-fitfactory/com.ps.kabs" target="_blank">View</a>
-        <a class="btn" onclick="copyLink('https://apkpure.net/kabs-fitfactory/com.ps.kabs')">Copy Link</a>
-    </div>
-</div>
-<!-- 4. Anshul Bijoux -->
-<div class="card">
-    <div class="avatar">AB</div>
-    <h3>Anshul Bijoux <span class="badge">Shopify APIs</span></h3>
-    <p class="details">Jewellery shopping app integrated with Shopify APIs.</p>
-    <div class="tags">
-        <span class="tag">Store: Google Play</span>
-        <span class="tag">Type: Jewellery / Ecommerce</span>
-    </div>
-    <div class="btn-group">
-        <a class="btn" target="_blank" href="https://play.google.com/store/apps/details?id=com.ps.anshulbijoux">View</a>
-        <a class="btn" onclick="copyLink('https://play.google.com/store/apps/details?id=com.ps.anshulbijoux')">Copy Link</a>
-    </div>
-</div>
-<!-- 5. Electrolife -->
-<div class="card">
-    <div class="avatar">EL</div>
-    <h3>Electrolife <span class="badge">Flutter</span></h3>
-    <p class="details">Home services + shopping combined into one platform.</p>
-    <div class="tags">
-        <span class="tag">Store: Google Play</span>
-        <span class="tag">Type: Services / Shopping</span>
-    </div>
-    <div class="btn-group">
-        <a class="btn" href="https://play.google.com/store/apps/details?id=com.electrolife" target="_blank">View</a>
-        <a class="btn" onclick="copyLink('https://play.google.com/store/apps/details?id=com.electrolife')">Copy Link</a>
-    </div>
-</div>
-<!-- 6. Kirar Dhakad Jeevansathi -->
-<div class="card">
-    <div class="avatar">JD</div>
-    <h3>Kirar Dhakad Jeevansathi <span class="badge">Flutter</span></h3>
-    <p class="details">Community matrimony app for Kirar Dhakad Samaj.</p>
-    <div class="tags">
-        <span class="tag">Store: Google Play</span>
-        <span class="tag">Type: Matrimony</span>
-    </div>
-    <div class="btn-group">
-        <a class="btn" href="https://play.google.com/store/apps/details?id=com.ps.jivansathigroup" target="_blank">View</a>
-        <a class="btn" onclick="copyLink('https://play.google.com/store/apps/details?id=com.ps.jivansathigroup')">Copy Link</a>
-    </div>
-</div>
-<!-- 7. Kast IPL -->
-<div class="card">
-    <div class="avatar">KI</div>
-    <h3>Kast IPL <span class="badge">Flutter</span></h3>
-    <p class="details">Fast and easy e-commerce shopping platform.</p>
-    <div class="tags">
-        <span class="tag">Store: Google Play</span>
-        <span class="tag">Type: Shopping / Ecommerce</span>
-    </div>
-    <div class="btn-group">
-        <a class="btn" href="https://play.google.com/store/apps/details?id=com.india.kastipl" target="_blank">View</a>
-        <a class="btn" onclick="copyLink('https://play.google.com/store/apps/details?id=com.india.kastipl')">Copy Link</a>
-    </div>
-</div>
-<!-- 8. Zever Galaxy -->
-<div class="card">
-    <div class="avatar">ZG</div>
-    <h3>Zever Galaxy <span class="badge">Flutter</span></h3>
-    <p class="details">Jewellery shopping & browsing platform.</p>
-    <div class="tags">
-        <span class="tag">Store: Google Play</span>
-        <span class="tag">Type: Jewellery / Ecommerce</span>
-    </div>
-    <div class="btn-group">
-        <a class="btn" href="https://play.google.com/store/apps/details?id=com.zevar.galaxy" target="_blank">View</a>
-        <a class="btn" onclick="copyLink('https://play.google.com/store/apps/details?id=com.zevar.galaxy')">Copy Link</a>
-    </div>
-</div>
-<!-- 9. SevBazaar -->
-<div class="card">
-    <div class="avatar">SB</div>
-    <h3>SevBazaar <span class="badge">Flutter</span></h3>
-    <p class="details">Order Sev & Namkeen from your favorite shops.</p>
-    <div class="tags">
-        <span class="tag">Store: APKPure</span>
-        <span class="tag">Type: Food / Marketplace</span>
-    </div>
-    <div class="btn-group">
-        <a class="btn" href="https://apkpure.com/sev-bazaar/com.sevbazaar.hp.sevbazaar" target="_blank">View</a>
-        <a class="btn" onclick="copyLink('https://apkpure.com/sev-bazaar/com.sevbazaar.hp.sevbazaar')">Copy Link</a>
-    </div>
-</div>
-<!-- 10. Ranka Tent -->
-<div class="card">
-    <div class="avatar">RT</div>
-    <h3>Ranka Tent <span class="badge">Flutter</span></h3>
-    <p class="details">Find wedding & event decorative items.</p>
-    <div class="tags">
-        <span class="tag">Store: Google Play</span>
-        <span class="tag">Type: Events / Shopping</span>
-    </div>
-    <div class="btn-group">
-        <a class="btn" href="https://play.google.com/store/apps/details?id=com.ps.rankatent" target="_blank">View</a>
-        <a class="btn" onclick="copyLink('https://play.google.com/store/apps/details?id=com.ps.rankatent')">Copy Link</a>
-    </div>
-</div>
-<!-- 11. Leave Management -->
-<div class="card">
-    <div class="avatar">LM</div>
-    <h3>Leave Management <span class="badge">Flutter</span></h3>
-    <p class="details">Employee leave tracking, requests and approvals.</p>
-    <div class="tags">
-        <span class="tag">Store: Google Play</span>
-        <span class="tag">Type: Business / HR</span>
-    </div>
-    <div class="btn-group">
-        <a class="btn" href="https://play.google.com/store/apps/details?id=com.leave.manage" target="_blank">View</a>
-        <a class="btn" onclick="copyLink('https://play.google.com/store/apps/details?id=com.leave.manage')">Copy Link</a>
-    </div>
-</div>
-<!-- 12. Bharat Mapping -->
-<div class="card">
-    <div class="avatar">BM</div>
-    <h3>Bharat Mapping <span class="badge">Flutter</span></h3>
-    <p class="details">Track Kshetras, Karyakartas & Sangh network across India.</p>
-    <div class="tags">
-        <span class="tag">Store: Google Play</span>
-        <span class="tag">Type: Mapping / Community</span>
-    </div>
-    <div class="btn-group">
-        <a class="btn" href="https://play.google.com/store/apps/details?id=com.ps.bmap" target="_blank">View</a>
-        <a class="btn" onclick="copyLink('https://play.google.com/store/apps/details?id=com.ps.bmap')">Copy Link</a>
-    </div>
-</div>
-<!-- 13. Sewadata -->
-<div class="card">
-    <div class="avatar">SD</div>
-    <h3>Sewadata <span class="badge">Flutter</span></h3>
-    <p class="details">Hire skilled service technicians for home repairs.</p>
-    <div class="tags">
-        <span class="tag">Store: Google Play</span>
-        <span class="tag">Type: Services</span>
-    </div>
-    <div class="btn-group">
-        <a class="btn" href="https://play.google.com/store/apps/details?id=com.ps.sewadata" target="_blank">View</a>
-        <a class="btn" onclick="copyLink('https://play.google.com/store/apps/details?id=com.ps.sewadata')">Copy Link</a>
-    </div>
-</div>
-<!-- 14. Unit Converter -->
-<div class="card">
-    <div class="avatar">UC</div>
-    <h3>Unit Converter <span class="badge">Flutter</span></h3>
-    <p class="details">Convert area units instantly (sq ft, acres, hectares).</p>
-    <div class="tags">
-        <span class="tag">Store: Google Play</span>
-        <span class="tag">Type: Tools</span>
-    </div>
-    <div class="btn-group">
-        <a class="btn" href="https://play.google.com/store/apps/details?id=com.ps.uc" target="_blank">View</a>
-        <a class="btn" onclick="copyLink('https://play.google.com/store/apps/details?id=com.ps.uc')">Copy Link</a>
-    </div>
-</div>
-<!-- 15. Sewadisha -->
-<div class="card">
-    <div class="avatar">SD</div>
-    <h3>Sewadisha <span class="badge">Flutter</span></h3>
-    <p class="details">Community & social support platform.</p>
-    <div class="tags">
-        <span class="tag">Store: APKPure</span>
-        <span class="tag">Type: Community</span>
-    </div>
-    <div class="btn-group">
-        <a class="btn" href="https://apkpure.net/motivfit/com.ps.sewadisha" target="_blank">View</a>
-        <a class="btn" onclick="copyLink('https://apkpure.net/motivfit/com.ps.sewadisha')">Copy Link</a>
-    </div>
-</div>
-<!-- 16. Motivfit -->
-<div class="card">
-    <div class="avatar">MF</div>
-    <h3>Motivfit Fitness <span class="badge">Flutter</span></h3>
-    <p class="details">Fitness + social media platform for gym lovers.</p>
-    <div class="tags">
-        <span class="tag">Store: APKPure</span>
-        <span class="tag">Type: Fitness / Social</span>
-    </div>
-    <div class="btn-group">
-        <a class="btn" href="https://apkpure.net/motivfit/com.ps.motivfit" target="_blank">View</a>
-        <a class="btn" onclick="copyLink('https://apkpure.net/motivfit/com.ps.motivfit')">Copy Link</a>
-    </div>
-</div>
-<!-- 17. Fitgrit -->
-<div class="card">
-    <div class="avatar">FG</div>
-    <h3>Fitgrit <span class="badge">Flutter</span></h3>
-    <p class="details">Find fitness partners with similar goals.</p>
-    <div class="tags">
-        <span class="tag">Store: APKPure</span>
-        <span class="tag">Type: Fitness / Social</span>
-    </div>
-    <div class="btn-group">
-        <a class="btn" href="https://apkpure.net/fitgrit-active/com.ps.fitgrit" target="_blank">View</a>
-        <a class="btn" onclick="copyLink('https://apkpure.net/fitgrit-active/com.ps.fitgrit')">Copy Link</a>
-    </div>
-</div>
-<!-- 18. Apna Tailor -->
-<div class="card">
-    <div class="avatar">AT</div>
-    <h3>Apna Tailor <span class="badge">React Native</span></h3>
-    <p class="details">Find skilled tailors for custom clothing.</p>
-    <div class="tags">
-        <span class="tag">Store: APKPure</span>
-        <span class="tag">Type: Tailoring / Services</span>
-    </div>
-    <div class="btn-group">
-        <a class="btn" href="https://apkpure.com/apna-tailor/com.apna.tailorapp" target="_blank">View</a>
-        <a class="btn" onclick="copyLink('https://apkpure.com/apna-tailor/com.apna.tailorapp')">Copy Link</a>
-    </div>
-</div>
-<!-- 19. Apna Tailor Customer -->
-<div class="card">
-    <div class="avatar">AC</div>
-    <h3>Apna Tailor Customer <span class="badge">React Native</span></h3>
-    <p class="details">Customer-side app for custom tailoring orders.</p>
-    <div class="tags">
-        <span class="tag">Store: Google Play</span>
-        <span class="tag">Type: Customer App</span>
-    </div>
-    <div class="btn-group">
-        <a class="btn" href="https://play.google.com/store/apps/details?id=com.apna.tailor.customer" target="_blank">View</a>
-        <a class="btn" onclick="copyLink('https://play.google.com/store/apps/details?id=com.apna.tailor.customer')">Copy Link</a>
-    </div>
-</div>
-<!-- 20. Apna Tailor Delivery -->
-<div class="card">
-    <div class="avatar">AD</div>
-    <h3>Apna Tailor Delivery <span class="badge">React Native</span></h3>
-    <p class="details">Pickup and delivery of tailoring orders.</p>
-    <div class="tags">
-        <span class="tag">Store: Google Play</span>
-        <span class="tag">Type: Delivery / Services</span>
-    </div>
-    <div class="btn-group">
-        <a class="btn" href="https://play.google.com/store/apps/details?id=com.apna.tailor.delivery" target="_blank">View</a>
-        <a class="btn" onclick="copyLink('https://play.google.com/store/apps/details?id=com.apna.tailor.delivery')">Copy Link</a>
-    </div>
-</div>
-<!-- 21. Where@App -->
-<div class="card">
-    <div class="avatar">WA</div>
-    <h3>Where@App <span class="badge">React Native</span></h3>
-    <p class="details">Find nightlife events & places your friends are going.</p>
-    <div class="tags">
-        <span class="tag">Store: APKPure</span>
-        <span class="tag">Type: Events / Social</span>
-    </div>
-    <div class="btn-group">
-        <a class="btn" href="https://apkpure.net/where-app/com.whereat" target="_blank">View</a>
-        <a class="btn" onclick="copyLink('https://apkpure.net/where-app/com.whereat')">Copy Link</a>
-    </div>
-</div>
-<!-- 22. GrowthAuction – Property Deals -->
-<div class="card">
-    <div class="avatar">GA</div>
-    <h3>GrowthAuction – Property Deals <span class="badge">React Native</span></h3>
-    <p class="details">Smart property auction app for buying, selling, and exploring real estate deals with ease.</p>
-    <div class="tags">
-        <span class="tag">Store: Google Play</span>
-        <span class="tag">Type: Real Estate</span>
-    </div>
-    <div class="btn-group">
-        <a class="btn" href="https://play.google.com/store/apps/details?id=com.growth.auctions" target="_blank">View</a>
-        <a class="btn" onclick="copyLink('https://play.google.com/store/apps/details?id=com.growth.auctions')">Copy Link</a>
-    </div>
-</div>
-<!-- 23. Bharat Propertys -->
-<div class="card">
-    <div class="avatar">BP</div>
-    <h3>Bharat Propertys <span class="badge">React Native</span></h3>
-    <p class="details">Your all-in-one real estate app for buying, selling, and renting properties across India.</p>
-    <div class="tags">
-        <span class="tag">Store: Google Play</span>
-        <span class="tag">Type: Real Estate</span>
-    </div>
-    <div class="btn-group">
-        <a class="btn" href="https://play.google.com/store/apps/details?id=com.bharat.property&hl=en_IN" target="_blank">View</a>
-        <a class="btn" onclick="copyLink('https://play.google.com/store/apps/details?id=com.bharat.property&hl=en_IN')">Copy Link</a>
-    </div>
-</div>
-<!-- 24. CRM Pratistha Management -->
-<div class="card">
-    <div class="avatar">CPM</div>
-    <h3>CRM Pratistha Management <span class="badge">React Native</span></h3>
-    <p class="details">A complete CRM system for property agents and builders to manage profiles, visits, feedback, and clients.</p>
-    <div class="tags">
-        <span class="tag">Store: Google Play</span>
-        <span class="tag">Type: Real Estate</span>
-    </div>
-    <div class="btn-group">
-        <a class="btn" href="https://play.google.com/store/apps/details?id=com.bharatpropertys.crm" target="_blank">View</a>
-        <a class="btn" onclick="copyLink('https://play.google.com/store/apps/details?id=com.bharatpropertys.crm')">Copy Link</a>
-    </div>
-</div>
-<!-- 25. Bharat Property CRM & Customer -->
-<div class="card">
-    <div class="avatar">BPC</div>
-    <h3>Bharat Property CRM & Customer <span class="badge">React Native</span></h3>
-    <p class="details">Seamless property CRM app to connect customers, agents, and developers in one place.</p>
-    <div class="tags">
-        <span class="tag">Store: Google Play</span>
-        <span class="tag">Type: Real Estate</span>
-    </div>
-    <div class="btn-group">
-        <a class="btn" href="https://play.google.com/store/apps/details?id=com.bharat.crm" target="_blank">View</a>
-        <a class="btn" onclick="copyLink('https://play.google.com/store/apps/details?id=com.bharat.crm')">Copy Link</a>
-    </div>
-</div>
-<!-- 26. Art On Click: Learn Art -->
-<div class="card">
-    <div class="avatar">AOC</div>
-    <h3>Art On Click: Learn Art <span class="badge">React Native</span></h3>
-    <p class="details">Interactive platform to learn, practice, and explore different forms of art online.</p>
-    <div class="tags">
-        <span class="tag">Store: Google Play</span>
-        <span class="tag">Type: Education</span>
-    </div>
-    <div class="btn-group">
-        <a class="btn" href="https://play.google.com/store/apps/details?id=com.india.artonclick" target="_blank">View</a>
-        <a class="btn" onclick="copyLink('https://play.google.com/store/apps/details?id=com.india.artonclick')">Copy Link</a>
-    </div>
-</div>
-<!-- 27. TruckExpress -->
-<div class="card">
-    <div class="avatar">TE</div>
-    <h3>TruckExpress <span class="badge">React Native</span></h3>
-    <p class="details">Logistics and transport management app for customers and companies to book and track shipments.</p>
-    <div class="tags">
-        <span class="tag">Store: Google Play</span>
-        <span class="tag">Type: Logistics</span>
-    </div>
-    <div class="btn-group">
-        <a class="btn" href="https://play.google.com/store/apps/details?id=com.truckexpress" target="_blank">View</a>
-        <a class="btn" onclick="copyLink('https://play.google.com/store/apps/details?id=com.truckexpress')">Copy Link</a>
-    </div>
-</div>
-<!-- 28. TruckExpress Driver -->
-<div class="card">
-    <div class="avatar">TED</div>
-    <h3>TruckExpress Driver <span class="badge">React Native</span></h3>
-    <p class="details">Driver-focused logistics app for managing trips, deliveries, and fleet operations.</p>
-    <div class="tags">
-        <span class="tag">Store: Google Play</span>
-        <span class="tag">Type: Logistics</span>
-    </div>
-    <div class="btn-group">
-        <a class="btn" href="https://play.google.com/store/apps/details?id=com.truckexpress.driver" target="_blank">View</a>
-        <a class="btn" onclick="copyLink('https://play.google.com/store/apps/details?id=com.truckexpress.driver')">Copy Link</a>
-    </div>
-</div>
-<!-- 29. Bharatiya Cinema -->
-<div class="card">
-    <div class="avatar">BC</div>
-    <h3>Bharatiya Cinema <span class="badge">React Native</span></h3>
-    <p class="details">An app to discover, view, and enjoy a variety of Indian cinema content with curated selections and features.</p>
-    <div class="tags">
-        <span class="tag">Store: Google Play</span>
-        <span class="tag">Type: Cinema</span>
-    </div>
-    <div class="btn-group">
-        <a class="btn" href="https://play.google.com/store/apps/details?id=com.bhartiya.cinema&hl=en_IN" target="_blank">View</a>
-        <a class="btn" onclick="copyLink('https://play.google.com/store/apps/details?id=com.bhartiya.cinema&hl=en_IN')">Copy Link</a>
-    </div>
-</div>
-<!-- 30. Berry Bazaar -->
-<div class="card">
-    <div class="avatar">BB</div>
-    <h3>Berry Bazaar <span class="badge">React Native</span></h3>
-    <p class="details">Sell & buy clothes - like FreeUp. Sell things you don't need to someone who'll love them. Shop like-new and gently used women's, kids', or men's clothes at up to 90% off MRP.</p>
-    <div class="tags">
-        <span class="tag">Store: Google Play</span>
-        <span class="tag">Type: Marketplace</span>
-    </div>
-    <div class="btn-group">
-        <a class="btn" href="https://play.google.com/store/apps/details?id=com.india.berrybazaar" target="_blank">View</a>
-        <a class="btn" onclick="copyLink('https://play.google.com/store/apps/details?id=com.india.berrybazaar')">Copy Link</a>
-    </div>
-</div>
-<!-- 31. Chanchal Milk: Online Delivery -->
-<div class="card">
-    <div class="avatar">CM</div>
-    <h3>Chanchal Milk: Online Delivery <span class="badge">React Native</span></h3>
-    <p class="details">Order, subscribe & recharge your wallet to get daily milk items.</p>
-    <div class="tags">
-        <span class="tag">Store: Google Play</span>
-        <span class="tag">Type: Services</span>
-    </div>
-    <div class="btn-group">
-        <a class="btn" href="https://play.google.com/store/apps/details?id=com.india.mks" target="_blank">View</a>
-        <a class="btn" onclick="copyLink('https://play.google.com/store/apps/details?id=com.india.mks')">Copy Link</a>
-    </div>
-</div>
-<!-- 32. Chayan Chemicals -->
-<div class="card">
-    <div class="avatar">CC</div>
-    <h3>Chayan Chemicals <span class="badge">React Native</span></h3>
-    <p class="details">A leading manufacturer and supplier of plant nutrients in India. An ISO 9001:2000 certified company, with market leadership in plant nutrients.</p>
-    <div class="tags">
-        <span class="tag">Store: Google Play</span>
-        <span class="tag">Type: Agri-Business</span>
-    </div>
-    <div class="btn-group">
-        <a class="btn" href="https://play.google.com/store/apps/details?id=com.india.chayan" target="_blank">View</a>
-        <a class="btn" onclick="copyLink('https://play.google.com/store/apps/details?id=com.india.chayan')">Copy Link</a>
-    </div>
-</div>
-<!-- 33. Pawan Wagh Academy -->
-<div class="card">
-    <div class="avatar">PWA</div>
-    <h3>Pawan Wagh Academy <span class="badge">React Native</span></h3>
-    <p class="details">Platform for everyone. Topic-wise video lectures by favorite lecturers, organized by classes and subjects.</p>
-    <div class="tags">
-        <span class="tag">Store: Google Play</span>
-        <span class="tag">Type: Education</span>
-    </div>
-    <div class="btn-group">
-        <a class="btn" href="https://play.google.com/store/apps/details?id=com.pwa.Pawan_Wagh_Academy&hl=en_IN" target="_blank">View</a>
-        <a class="btn" onclick="copyLink('https://play.google.com/store/apps/details?id=com.pwa.Pawan_Wagh_Academy&hl=en_IN')">Copy Link</a>
-    </div>
-</div>
-<!-- 34. Emansoon -->
-<div class="card">
-    <div class="avatar">EM</div>
-    <h3>Emansoon <span class="badge">React Native</span></h3>
-    <p class="details">Online Agri-Business Start-up, helping farmers get high-quality agricultural products like pesticides, fertilizers, seeds, and equipment from trusted shops nearby.</p>
-    <div class="tags">
-        <span class="tag">Store: Google Play</span>
-        <span class="tag">Type: Agri-Business</span>
-    </div>
-    <div class="btn-group">
-        <a class="btn" href="https://play.google.com/store/apps/details?id=com.india.emansoon" target="_blank">View</a>
-        <a class="btn" onclick="copyLink('https://play.google.com/store/apps/details?id=com.india.emansoon')">Copy Link</a>
-    </div>
-</div>
-<!-- 35. Order On Click -->
-<div class="card">
-    <div class="avatar">OOC</div>
-    <h3>Order On Click <span class="badge">React Native</span></h3>
-    <p class="details">Works with Electro Life Technical (India) Pvt. Ltd. for online shopping, home delivery service & hire on rent services across India.</p>
-    <div class="tags">
-        <span class="tag">Store: Google Play</span>
-        <span class="tag">Type: Services</span>
-    </div>
-    <div class="btn-group">
-        <a class="btn" href="https://play.google.com/store/apps/details?id=com.india.orderonclick&hl=en_IN" target="_blank">View</a>
-        <a class="btn" onclick="copyLink('https://play.google.com/store/apps/details?id=com.india.orderonclick&hl=en_IN')">Copy Link</a>
-    </div>
-</div>
-<!-- ---------------------------- END OF APPS ---------------------------- -->
-</div>
-<script>
-function copyLink(url) {
-    navigator.clipboard.writeText(url);
-    alert("Link copied!");
-}
-document.addEventListener('DOMContentLoaded', function() {
-    const search = document.getElementById('search');
-    const filterTech = document.getElementById('filter-tech');
-    const filterType = document.getElementById('filter-type');
-    const filterStore = document.getElementById('filter-store');
-    const cards = document.querySelectorAll('.card');
-    function filterCards() {
-        const searchTerm = search.value.toLowerCase();
-        const techTerm = filterTech.value;
-        const typeTerm = filterType.value;
-        const storeTerm = filterStore.value;
-        cards.forEach(card => {
-            const title = card.querySelector('h3').textContent.toLowerCase();
-            const tech = card.querySelector('.badge').textContent;
-            const type = card.querySelector('.tag:nth-child(2)').textContent.replace('Type: ', '');
-            const store = card.querySelector('.tag:nth-child(1)').textContent.replace('Store: ', '');
-            const matchesSearch = title.includes(searchTerm) || searchTerm === '';
-            const matchesTech = techTerm === '' || tech.includes(techTerm);
-            const matchesType = typeTerm === '' || type.includes(typeTerm);
-            const matchesStore = storeTerm === '' || store.includes(storeTerm);
-            if (matchesSearch && matchesTech && matchesType && matchesStore) {
-                card.style.display = 'block';
-            } else {
-                card.style.display = 'none';
-            }
+      </select>
+    </div>
+    <div class="grid" id="appsGrid">
+      <!-- Apps will be inserted here by JavaScript -->
+    </div>
+    <script>
+      const appsData = [
+        {
+          avatar: "OT",
+          title: "OTT Platform (BLF Prime Video)",
+          badge: "Flutter",
+          details: "Watch your favorite content anywhere anytime.",
+          tags: [
+            { type: "Store", value: "Google Play" },
+            { type: "Type", value: "Video Streaming" },
+          ],
+          links: [
+            {
+              url: "https://play.google.com/store/apps/details?id=com.ps.blf_prime_video",
+              text: "View",
+            },
+            {
+              url: "https://play.google.com/store/apps/details?id=com.ps.blf_prime_video",
+              text: "Copy Link",
+            },
+          ],
+        },
+        {
+          avatar: "RR",
+          title: "Rain Reminder",
+          badge: "Flutter",
+          details:
+            "Weather forecast & rain alerts with accurate notifications.",
+          tags: [
+            { type: "Store", value: "Google Play" },
+            { type: "Type", value: "Weather App" },
+          ],
+          links: [
+            {
+              url: "https://play.google.com/store/apps/details?id=com.ps.weather",
+              text: "View",
+            },
+            {
+              url: "https://play.google.com/store/apps/details?id=com.ps.weather",
+              text: "Copy Link",
+            },
+          ],
+        },
+        {
+          avatar: "KF",
+          title: "Kabs FitFactory",
+          badge: "Shopify APIs",
+          details: "Fitness & e-commerce app integrated with Shopify APIs.",
+          tags: [
+            { type: "Store", value: "APKPure" },
+            { type: "Type", value: "Fitness / Shopping" },
+          ],
+          links: [
+            {
+              url: "https://apkpure.net/kabs-fitfactory/com.ps.kabs",
+              text: "View",
+            },
+            {
+              url: "https://apkpure.net/kabs-fitfactory/com.ps.kabs",
+              text: "Copy Link",
+            },
+          ],
+        },
+        {
+          avatar: "AB",
+          title: "Anshul Bijoux",
+          badge: "Shopify APIs",
+          details: "Jewellery shopping app integrated with Shopify APIs.",
+          tags: [
+            { type: "Store", value: "Google Play" },
+            { type: "Type", value: "Jewellery / Ecommerce" },
+          ],
+          links: [
+            {
+              url: "https://play.google.com/store/apps/details?id=com.ps.anshulbijoux",
+              text: "View",
+            },
+            {
+              url: "https://play.google.com/store/apps/details?id=com.ps.anshulbijoux",
+              text: "Copy Link",
+            },
+          ],
+        },
+        {
+          avatar: "EL",
+          title: "Electrolife",
+          badge: "Flutter",
+          details: "Home services + shopping combined into one platform.",
+          tags: [
+            { type: "Store", value: "Google Play" },
+            { type: "Type", value: "Services / Shopping" },
+          ],
+          links: [
+            {
+              url: "https://play.google.com/store/apps/details?id=com.electrolife",
+              text: "View",
+            },
+            {
+              url: "https://play.google.com/store/apps/details?id=com.electrolife",
+              text: "Copy Link",
+            },
+          ],
+        },
+        {
+          avatar: "JD",
+          title: "Kirar Dhakad Jeevansathi",
+          badge: "Flutter",
+          details: "Community matrimony app for Kirar Dhakad Samaj.",
+          tags: [
+            { type: "Store", value: "Google Play" },
+            { type: "Type", value: "Matrimony" },
+          ],
+          links: [
+            {
+              url: "https://play.google.com/store/apps/details?id=com.ps.jivansathigroup",
+              text: "View",
+            },
+            {
+              url: "https://play.google.com/store/apps/details?id=com.ps.jivansathigroup",
+              text: "Copy Link",
+            },
+          ],
+        },
+        {
+          avatar: "KI",
+          title: "Kast IPL",
+          badge: "Flutter",
+          details: "Fast and easy e-commerce shopping platform.",
+          tags: [
+            { type: "Store", value: "Google Play" },
+            { type: "Type", value: "Shopping / Ecommerce" },
+          ],
+          links: [
+            {
+              url: "https://play.google.com/store/apps/details?id=com.india.kastipl",
+              text: "View",
+            },
+            {
+              url: "https://play.google.com/store/apps/details?id=com.india.kastipl",
+              text: "Copy Link",
+            },
+          ],
+        },
+        {
+          avatar: "ZG",
+          title: "Zever Galaxy",
+          badge: "Flutter",
+          details: "Jewellery shopping & browsing platform.",
+          tags: [
+            { type: "Store", value: "Google Play" },
+            { type: "Type", value: "Jewellery / Ecommerce" },
+          ],
+          links: [
+            {
+              url: "https://play.google.com/store/apps/details?id=com.zevar.galaxy",
+              text: "View",
+            },
+            {
+              url: "https://play.google.com/store/apps/details?id=com.zevar.galaxy",
+              text: "Copy Link",
+            },
+          ],
+        },
+        {
+          avatar: "SB",
+          title: "SevBazaar",
+          badge: "Flutter",
+          details: "Order Sev & Namkeen from your favorite shops.",
+          tags: [
+            { type: "Store", value: "APKPure" },
+            { type: "Type", value: "Food / Marketplace" },
+          ],
+          links: [
+            {
+              url: "https://apkpure.com/sev-bazaar/com.sevbazaar.hp.sevbazaar",
+              text: "View",
+            },
+            {
+              url: "https://apkpure.com/sev-bazaar/com.sevbazaar.hp.sevbazaar",
+              text: "Copy Link",
+            },
+          ],
+        },
+        {
+          avatar: "RT",
+          title: "Ranka Tent",
+          badge: "Flutter",
+          details: "Find wedding & event decorative items.",
+          tags: [
+            { type: "Store", value: "Google Play" },
+            { type: "Type", value: "Events / Shopping" },
+          ],
+          links: [
+            {
+              url: "https://play.google.com/store/apps/details?id=com.ps.rankatent",
+              text: "View",
+            },
+            {
+              url: "https://play.google.com/store/apps/details?id=com.ps.rankatent",
+              text: "Copy Link",
+            },
+          ],
+        },
+        {
+          avatar: "LM",
+          title: "Leave Management",
+          badge: "Flutter",
+          details: "Employee leave tracking, requests and approvals.",
+          tags: [
+            { type: "Store", value: "Google Play" },
+            { type: "Type", value: "Business / HR" },
+          ],
+          links: [
+            {
+              url: "https://play.google.com/store/apps/details?id=com.leave.manage",
+              text: "View",
+            },
+            {
+              url: "https://play.google.com/store/apps/details?id=com.leave.manage",
+              text: "Copy Link",
+            },
+          ],
+        },
+        {
+          avatar: "BM",
+          title: "Bharat Mapping",
+          badge: "Flutter",
+          details: "Track Kshetras, Karyakartas & Sangh network across India.",
+          tags: [
+            { type: "Store", value: "Google Play" },
+            { type: "Type", value: "Mapping / Community" },
+          ],
+          links: [
+            {
+              url: "https://play.google.com/store/apps/details?id=com.ps.bmap",
+              text: "View",
+            },
+            {
+              url: "https://play.google.com/store/apps/details?id=com.ps.bmap",
+              text: "Copy Link",
+            },
+          ],
+        },
+        {
+          avatar: "SD",
+          title: "Sewadata",
+          badge: "Flutter",
+          details: "Hire skilled service technicians for home repairs.",
+          tags: [
+            { type: "Store", value: "Google Play" },
+            { type: "Type", value: "Services" },
+          ],
+          links: [
+            {
+              url: "https://play.google.com/store/apps/details?id=com.ps.sewadata",
+              text: "View",
+            },
+            {
+              url: "https://play.google.com/store/apps/details?id=com.ps.sewadata",
+              text: "Copy Link",
+            },
+          ],
+        },
+        {
+          avatar: "UC",
+          title: "Unit Converter",
+          badge: "Flutter",
+          details: "Convert area units instantly (sq ft, acres, hectares).",
+          tags: [
+            { type: "Store", value: "Google Play" },
+            { type: "Type", value: "Tools" },
+          ],
+          links: [
+            {
+              url: "https://play.google.com/store/apps/details?id=com.ps.uc",
+              text: "View",
+            },
+            {
+              url: "https://play.google.com/store/apps/details?id=com.ps.uc",
+              text: "Copy Link",
+            },
+          ],
+        },
+        {
+          avatar: "SD",
+          title: "Sewadisha",
+          badge: "Flutter",
+          details: "Community & social support platform.",
+          tags: [
+            { type: "Store", value: "APKPure" },
+            { type: "Type", value: "Community" },
+          ],
+          links: [
+            {
+              url: "https://apkpure.net/motivfit/com.ps.sewadisha",
+              text: "View",
+            },
+            {
+              url: "https://apkpure.net/motivfit/com.ps.sewadisha",
+              text: "Copy Link",
+            },
+          ],
+        },
+        {
+          avatar: "MF",
+          title: "Motivfit Fitness",
+          badge: "Flutter",
+          details: "Fitness + social media platform for gym lovers.",
+          tags: [
+            { type: "Store", value: "APKPure" },
+            { type: "Type", value: "Fitness / Social" },
+          ],
+          links: [
+            {
+              url: "https://apkpure.net/motivfit/com.ps.motivfit",
+              text: "View",
+            },
+            {
+              url: "https://apkpure.net/motivfit/com.ps.motivfit",
+              text: "Copy Link",
+            },
+          ],
+        },
+        {
+          avatar: "FG",
+          title: "Fitgrit",
+          badge: "Flutter",
+          details: "Find fitness partners with similar goals.",
+          tags: [
+            { type: "Store", value: "APKPure" },
+            { type: "Type", value: "Fitness / Social" },
+          ],
+          links: [
+            {
+              url: "https://apkpure.net/fitgrit-active/com.ps.fitgrit",
+              text: "View",
+            },
+            {
+              url: "https://apkpure.net/fitgrit-active/com.ps.fitgrit",
+              text: "Copy Link",
+            },
+          ],
+        },
+        {
+          avatar: "AT",
+          title: "Apna Tailor",
+          badge: "React Native",
+          details: "Find skilled tailors for custom clothing.",
+          tags: [
+            { type: "Store", value: "APKPure" },
+            { type: "Type", value: "Tailoring / Services" },
+          ],
+          links: [
+            {
+              url: "https://apkpure.com/apna-tailor/com.apna.tailorapp",
+              text: "View",
+            },
+            {
+              url: "https://apkpure.com/apna-tailor/com.apna.tailorapp",
+              text: "Copy Link",
+            },
+          ],
+        },
+        {
+          avatar: "AC",
+          title: "Apna Tailor Customer",
+          badge: "React Native",
+          details: "Customer-side app for custom tailoring orders.",
+          tags: [
+            { type: "Store", value: "Google Play" },
+            { type: "Type", value: "Customer App" },
+          ],
+          links: [
+            {
+              url: "https://play.google.com/store/apps/details?id=com.apna.tailor.customer",
+              text: "View",
+            },
+            {
+              url: "https://play.google.com/store/apps/details?id=com.apna.tailor.customer",
+              text: "Copy Link",
+            },
+          ],
+        },
+        {
+          avatar: "AD",
+          title: "Apna Tailor Delivery",
+          badge: "React Native",
+          details: "Pickup and delivery of tailoring orders.",
+          tags: [
+            { type: "Store", value: "Google Play" },
+            { type: "Type", value: "Delivery / Services" },
+          ],
+          links: [
+            {
+              url: "https://play.google.com/store/apps/details?id=com.apna.tailor.delivery",
+              text: "View",
+            },
+            {
+              url: "https://play.google.com/store/apps/details?id=com.apna.tailor.delivery",
+              text: "Copy Link",
+            },
+          ],
+        },
+        {
+          avatar: "WA",
+          title: "Where@App",
+          badge: "React Native",
+          details: "Find nightlife events & places your friends are going.",
+          tags: [
+            { type: "Store", value: "APKPure" },
+            { type: "Type", value: "Events / Social" },
+          ],
+          links: [
+            { url: "https://apkpure.net/where-app/com.whereat", text: "View" },
+            {
+              url: "https://apkpure.net/where-app/com.whereat",
+              text: "Copy Link",
+            },
+          ],
+        },
+        {
+          avatar: "GA",
+          title: "GrowthAuction – Property Deals",
+          badge: "React Native",
+          details:
+            "Smart property auction app for buying, selling, and exploring real estate deals with ease.",
+          tags: [
+            { type: "Store", value: "Google Play" },
+            { type: "Type", value: "Real Estate" },
+          ],
+          links: [
+            {
+              url: "https://play.google.com/store/apps/details?id=com.growth.auctions",
+              text: "View",
+            },
+            {
+              url: "https://play.google.com/store/apps/details?id=com.growth.auctions",
+              text: "Copy Link",
+            },
+          ],
+        },
+        {
+          avatar: "BP",
+          title: "Bharat Propertys",
+          badge: "React Native",
+          details:
+            "Your all-in-one real estate app for buying, selling, and renting properties across India.",
+          tags: [
+            { type: "Store", value: "Google Play" },
+            { type: "Type", value: "Real Estate" },
+          ],
+          links: [
+            {
+              url: "https://play.google.com/store/apps/details?id=com.bharat.property&hl=en_IN",
+              text: "View",
+            },
+            {
+              url: "https://play.google.com/store/apps/details?id=com.bharat.property&hl=en_IN",
+              text: "Copy Link",
+            },
+          ],
+        },
+        {
+          avatar: "CPM",
+          title: "CRM Pratistha Management",
+          badge: "React Native",
+          details:
+            "A complete CRM system for property agents and builders to manage profiles, visits, feedback, and clients.",
+          tags: [
+            { type: "Store", value: "Google Play" },
+            { type: "Type", value: "Real Estate" },
+          ],
+          links: [
+            {
+              url: "https://play.google.com/store/apps/details?id=com.bharatpropertys.crm",
+              text: "View",
+            },
+            {
+              url: "https://play.google.com/store/apps/details?id=com.bharatpropertys.crm",
+              text: "Copy Link",
+            },
+          ],
+        },
+        {
+          avatar: "BPC",
+          title: "Bharat Property CRM & Customer",
+          badge: "React Native",
+          details:
+            "Seamless property CRM app to connect customers, agents, and developers in one place.",
+          tags: [
+            { type: "Store", value: "Google Play" },
+            { type: "Type", value: "Real Estate" },
+          ],
+          links: [
+            {
+              url: "https://play.google.com/store/apps/details?id=com.bharat.crm",
+              text: "View",
+            },
+            {
+              url: "https://play.google.com/store/apps/details?id=com.bharat.crm",
+              text: "Copy Link",
+            },
+          ],
+        },
+        {
+          avatar: "AOC",
+          title: "Art On Click: Learn Art",
+          badge: "React Native",
+          details:
+            "Interactive platform to learn, practice, and explore different forms of art online.",
+          tags: [
+            { type: "Store", value: "Google Play" },
+            { type: "Type", value: "Education" },
+          ],
+          links: [
+            {
+              url: "https://play.google.com/store/apps/details?id=com.india.artonclick",
+              text: "View",
+            },
+            {
+              url: "https://play.google.com/store/apps/details?id=com.india.artonclick",
+              text: "Copy Link",
+            },
+          ],
+        },
+        {
+          avatar: "TE",
+          title: "TruckExpress",
+          badge: "React Native",
+          details:
+            "Logistics and transport management app for customers and companies to book and track shipments.",
+          tags: [
+            { type: "Store", value: "Google Play" },
+            { type: "Type", value: "Logistics" },
+          ],
+          links: [
+            {
+              url: "https://play.google.com/store/apps/details?id=com.truckexpress",
+              text: "View",
+            },
+            {
+              url: "https://play.google.com/store/apps/details?id=com.truckexpress",
+              text: "Copy Link",
+            },
+          ],
+        },
+        {
+          avatar: "TED",
+          title: "TruckExpress Driver",
+          badge: "React Native",
+          details:
+            "Driver-focused logistics app for managing trips, deliveries, and fleet operations.",
+          tags: [
+            { type: "Store", value: "Google Play" },
+            { type: "Type", value: "Logistics" },
+          ],
+          links: [
+            {
+              url: "https://play.google.com/store/apps/details?id=com.truckexpress.driver",
+              text: "View",
+            },
+            {
+              url: "https://play.google.com/store/apps/details?id=com.truckexpress.driver",
+              text: "Copy Link",
+            },
+          ],
+        },
+        {
+          avatar: "BC",
+          title: "Bharatiya Cinema",
+          badge: "React Native",
+          details:
+            "An app to discover, view, and enjoy a variety of Indian cinema content with curated selections and features.",
+          tags: [
+            { type: "Store", value: "Google Play" },
+            { type: "Type", value: "Cinema" },
+          ],
+          links: [
+            {
+              url: "https://play.google.com/store/apps/details?id=com.bhartiya.cinema&hl=en_IN",
+              text: "View",
+            },
+            {
+              url: "https://play.google.com/store/apps/details?id=com.bhartiya.cinema&hl=en_IN",
+              text: "Copy Link",
+            },
+          ],
+        },
+        {
+          avatar: "BB",
+          title: "Berry Bazaar",
+          badge: "React Native",
+          details:
+            "Sell & buy clothes - like FreeUp. Sell things you don't need to someone who'll love them. Shop like-new and gently used women's, kids', or men's clothes at up to 90% off MRP.",
+          tags: [
+            { type: "Store", value: "Google Play" },
+            { type: "Type", value: "Marketplace" },
+          ],
+          links: [
+            {
+              url: "https://play.google.com/store/apps/details?id=com.india.berrybazaar",
+              text: "View",
+            },
+            {
+              url: "https://play.google.com/store/apps/details?id=com.india.berrybazaar",
+              text: "Copy Link",
+            },
+          ],
+        },
+        {
+          avatar: "CM",
+          title: "Chanchal Milk: Online Delivery",
+          badge: "React Native",
+          details:
+            "Order, subscribe & recharge your wallet to get daily milk items.",
+          tags: [
+            { type: "Store", value: "Google Play" },
+            { type: "Type", value: "Services" },
+          ],
+          links: [
+            {
+              url: "https://play.google.com/store/apps/details?id=com.india.mks",
+              text: "View",
+            },
+            {
+              url: "https://play.google.com/store/apps/details?id=com.india.mks",
+              text: "Copy Link",
+            },
+          ],
+        },
+        {
+          avatar: "CC",
+          title: "Chayan Chemicals",
+          badge: "React Native",
+          details:
+            "A leading manufacturer and supplier of plant nutrients in India. An ISO 9001:2000 certified company, with market leadership in plant nutrients.",
+          tags: [
+            { type: "Store", value: "Google Play" },
+            { type: "Type", value: "Agri-Business" },
+          ],
+          links: [
+            {
+              url: "https://play.google.com/store/apps/details?id=com.india.chayan",
+              text: "View",
+            },
+            {
+              url: "https://play.google.com/store/apps/details?id=com.india.chayan",
+              text: "Copy Link",
+            },
+          ],
+        },
+        {
+          avatar: "PWA",
+          title: "Pawan Wagh Academy",
+          badge: "React Native",
+          details:
+            "Platform for everyone. Topic-wise video lectures by favorite lecturers, organized by classes and subjects.",
+          tags: [
+            { type: "Store", value: "Google Play" },
+            { type: "Type", value: "Education" },
+          ],
+          links: [
+            {
+              url: "https://play.google.com/store/apps/details?id=com.pwa.Pawan_Wagh_Academy&hl=en_IN",
+              text: "View",
+            },
+            {
+              url: "https://play.google.com/store/apps/details?id=com.pwa.Pawan_Wagh_Academy&hl=en_IN",
+              text: "Copy Link",
+            },
+          ],
+        },
+        {
+          avatar: "EM",
+          title: "Emansoon",
+          badge: "React Native",
+          details:
+            "Online Agri-Business Start-up, helping farmers get high-quality agricultural products like pesticides, fertilizers, seeds, and equipment from trusted shops nearby.",
+          tags: [
+            { type: "Store", value: "Google Play" },
+            { type: "Type", value: "Agri-Business" },
+          ],
+          links: [
+            {
+              url: "https://play.google.com/store/apps/details?id=com.india.emansoon",
+              text: "View",
+            },
+            {
+              url: "https://play.google.com/store/apps/details?id=com.india.emansoon",
+              text: "Copy Link",
+            },
+          ],
+        },
+        {
+          avatar: "OOC",
+          title: "Order On Click",
+          badge: "React Native",
+          details:
+            "Works with Electro Life Technical (India) Pvt. Ltd. for online shopping, home delivery service & hire on rent services across India.",
+          tags: [
+            { type: "Store", value: "Google Play" },
+            { type: "Type", value: "Services" },
+          ],
+          links: [
+            {
+              url: "https://play.google.com/store/apps/details?id=com.india.orderonclick&hl=en_IN",
+              text: "View",
+            },
+            {
+              url: "https://play.google.com/store/apps/details?id=com.india.orderonclick&hl=en_IN",
+              text: "Copy Link",
+            },
+          ],
+        },
+        {
+          avatar: "TGPA",
+          title: "Task Grid – Provider App",
+          badge: "React Native",
+          details:
+            "  Task Grid is your all-in-one service booking app connecting customers with trusted professionals across various categories.",
+          tags: [
+            { type: "Store", value: "Google Play" },
+            { type: "Type", value: "Services" },
+          ],
+          links: [
+            {
+              url: "https://play.google.com/store/apps/details?id=com.taskgrid.provider",
+              text: "View",
+            },
+            {
+              url: "https://play.google.com/store/apps/details?id=com.taskgrid.provider",
+              text: "Copy Link",
+            },
+          ],
+        },
+        {
+          avatar: "TGTS",
+          title: "Task Grid – Trusted Services",
+          badge: "React Native",
+          details:
+            "  Task Grid is your all-in-one service booking app connecting customers with trusted professionals across various categories.",
+          tags: [
+            { type: "Store", value: "Google Play" },
+            { type: "Type", value: "Services" },
+          ],
+          links: [
+            {
+              url: "https://play.google.com/store/apps/details?id=com.taskgrid.customer",
+              text: "View",
+            },
+            {
+              url: "https://play.google.com/store/apps/details?id=com.taskgrid.customer",
+              text: "Copy Link",
+            },
+          ],
+        },
+      ];
+
+      /* SORT ALPHABETICALLY */
+      appsData.sort((a, b) => a.title.localeCompare(b.title));
+
+      /* RENDER CARDS */
+      function renderApps(apps) {
+        const grid = document.getElementById("appsGrid");
+        grid.innerHTML = "";
+        apps.forEach((app) => {
+          const card = document.createElement("div");
+          card.className = "card";
+          card.innerHTML = `
+            <div class="avatar">${app.avatar}</div>
+            <h3>${app.title} <span class="badge">${app.badge}</span></h3>
+            <p class="details">${app.details}</p>
+            <div class="tags">
+                ${app.tags
+                  .map(
+                    (tag) =>
+                      `<span class="tag">${tag.type}: ${tag.value}</span>`
+                  )
+                  .join("")}
+            </div>
+            <div class="btn-group">
+                ${app.links
+                  .map(
+                    (link) => `
+                    <a class="btn" ${
+                      link.text === "Copy Link"
+                        ? `onclick="copyLink('${link.url}')"`
+                        : `href="${link.url}" target="_blank"`
+                    }>${link.text}</a>
+                `
+                  )
+                  .join("")}
+            </div>
+        `;
+          grid.appendChild(card);
         });
-    }
-    search.addEventListener('input', filterCards);
-    filterTech.addEventListener('change', filterCards);
-    filterType.addEventListener('change', filterCards);
-    filterStore.addEventListener('change', filterCards);
-});
-</script>
-</body>
+      }
+
+      function copyLink(url) {
+        navigator.clipboard.writeText(url);
+        alert("Link copied!");
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        const search = document.getElementById("search");
+        const filterTech = document.getElementById("filter-tech");
+        const filterType = document.getElementById("filter-type");
+        const filterStore = document.getElementById("filter-store");
+
+        function filterCards() {
+          const searchTerm = search.value.toLowerCase();
+          const techTerm = filterTech.value;
+          const typeTerm = filterType.value;
+          const storeTerm = filterStore.value;
+
+          const filtered = appsData.filter((app) => {
+            const title = app.title.toLowerCase();
+            const tech = app.badge;
+            const type = app.tags.find((t) => t.type === "Type").value;
+            const store = app.tags.find((t) => t.type === "Store").value;
+
+            return (
+              (title.includes(searchTerm) || searchTerm === "") &&
+              (techTerm === "" || tech.includes(techTerm)) &&
+              (typeTerm === "" || type.includes(typeTerm)) &&
+              (storeTerm === "" || store.includes(storeTerm))
+            );
+          });
+
+          renderApps(filtered);
+        }
+
+        search.addEventListener("input", filterCards);
+        filterTech.addEventListener("change", filterCards);
+        filterType.addEventListener("change", filterCards);
+        filterStore.addEventListener("change", filterCards);
+
+        // Initial render
+        renderApps(appsData);
+      });
+    </script>
+  </body>
 </html>
