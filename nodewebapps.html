@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Web Portfolio</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+        background: #0b0f19;
+        color: #fff;
+        margin: 0;
+      }
+      header {
+        text-align: center;
+        padding: 5px 20px;
+        background: linear-gradient(135deg, #1a237e, #0d47a1);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      header h1 {
+        font-size: 48px;
+        font-weight: 700;
+        animation: fadeIn 1.5s ease-in-out;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(-20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      header p {
+        opacity: 0.8;
+        font-size: 18px;
+      }
+      .controls {
+        max-width: 1300px;
+        margin: 20px auto;
+        padding: 10px;
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+      .controls input,
+      .controls select {
+        flex: 1;
+        min-width: 150px;
+        padding: 10px;
+        background: #1f2937;
+        color: #fff;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+        font-family: "Poppins", sans-serif;
+      }
+      .controls input::placeholder {
+        color: #9ca3af;
+      }
+      .grid {
+        max-width: 1300px;
+        margin: 20px auto;
+        padding: 10px;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 20px;
+      }
+      .card {
+        background: #111827;
+        border-radius: 16px;
+        padding: 25px;
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.35);
+        transition: 0.3s;
+        display: block;
+      }
+      .card:hover {
+        transform: translateY(-8px);
+        border-color: #3ea6ff;
+        box-shadow: 0px 12px 35px rgba(62, 166, 255, 0.5);
+      }
+      .avatar {
+        width: 48px;
+        height: 48px;
+        background: #1e293b;
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: 600;
+        font-size: 18px;
+        color: #a5b4fc;
+        margin-bottom: 10px;
+      }
+      .badge {
+        display: inline-block;
+        padding: 6px 12px;
+        font-size: 12px;
+        border-radius: 8px;
+        background: rgba(0, 200, 255, 0.14);
+        color: #38bdf8;
+        margin-left: 10px;
+        font-weight: 500;
+      }
+      .details {
+        margin: 12px 0;
+        opacity: 0.85;
+        font-size: 14px;
+        line-height: 1.5;
+      }
+      .tags {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin: 10px 0;
+      }
+      .tag {
+        background: #1f2937;
+        padding: 6px 12px;
+        border-radius: 8px;
+        font-size: 12px;
+        opacity: 0.8;
+      }
+      .btn-group {
+        display: flex;
+        gap: 10px;
+        margin-top: 18px;
+      }
+      .btn {
+        flex: 1;
+        padding: 10px;
+        background: #1f2937;
+        color: #fff;
+        text-align: center;
+        border-radius: 10px;
+        text-decoration: none;
+        font-size: 14px;
+        transition: 0.3s;
+        cursor: pointer;
+      }
+      .btn:hover {
+        background: #3ea6ff;
+        color: #000;
+        font-weight: 600;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Node + React web apps</h1>
+      <p>
+        A collection of professional web projects built using React, Next.js,
+        Node.js, and more
+      </p>
+    </header>
+    <div class="controls">
+      <input type="text" id="search" placeholder="Search projects..." />
+      <select id="filter-tech">
+        <option value="">All Technologies</option>
+        <option value="React">React</option>
+        <option value="Next.js">Next.js</option>
+        <option value="Node.js">Node.js</option>
+        <option value="PHP">PHP</option>
+      </select>
+      <select id="filter-type">
+        <option value="">All Types</option>
+        <option value="E-commerce">E-commerce</option>
+        <option value="CRM">CRM</option>
+        <option value="Education">Education</option>
+        <option value="Logistics">Logistics</option>
+        <option value="Real Estate">Real Estate</option>
+        <option value="Community">Community</option>
+        <option value="Services">Services</option>
+        <option value="Auction">Auction</option>
+        <option value="School Management">School Management</option>
+        <option value="Religious">Religious</option>
+      </select>
+    </div>
+    <div class="grid" id="appsGrid">
+      <!-- Projects will be inserted here by JavaScript -->
+    </div>
+    <script>
+      const projectsData = [
+        {
+          avatar: "EB",
+          title: "eBasket Client",
+          badge: "React/Vite",
+          details:
+            "Grocery/e-commerce web client. Built with React/Vite, hosted on Cloudflare Pages.",
+          tags: [
+            { type: "Type", value: "E-commerce" },
+            { type: "Tech", value: "React" },
+          ],
+          links: [
+            {
+              url: "https://ebasket-client.pages.dev/",
+              text: "View",
+            },
+            {
+              url: "https://ebasket-client.pages.dev/",
+              text: "Copy Link",
+            },
+          ],
+        },
+        {
+          avatar: "FZ",
+          title: "Flipzy Website",
+          badge: "React/Next.js",
+          details: "Startup/brand showcase. React/Next.js on Vercel.",
+          tags: [
+            { type: "Type", value: "Showcase" },
+            { type: "Tech", value: "React" },
+          ],
+          links: [
+            {
+              url: "https://flipzy-website.vercel.app/",
+              text: "View",
+            },
+            {
+              url: "https://flipzy-website.vercel.app/",
+              text: "Copy Link",
+            },
+          ],
+        },
+        {
+          avatar: "CRM",
+          title: "CRM CP Admin",
+          badge: "React/Next.js",
+          details:
+            "CRM admin dashboard for managing clients/leads. React/Next.js on Vercel.",
+          tags: [
+            { type: "Type", value: "CRM" },
+            { type: "Tech", value: "React" },
+          ],
+          links: [
+            {
+              url: "https://crm-cp-admin.vercel.app/",
+              text: "View",
+            },
+            {
+              url: "https://crm-cp-admin.vercel.app/",
+              text: "Copy Link",
+            },
+          ],
+        },
+        {
+          avatar: "OOC",
+          title: "OrderOnClick",
+          badge: "React/Next.js",
+          details:
+            "E-commerce & home delivery platform with Android app. React/Next.js on Vercel.",
+          tags: [
+            { type: "Type", value: "E-commerce" },
+            { type: "Tech", value: "React" },
+          ],
+          links: [
+            {
+              url: "https://order-on-click-next.vercel.app/",
+              text: "View",
+            },
+            {
+              url: "https://order-on-click-next.vercel.app/",
+              text: "Copy Link",
+            },
+          ],
+        },
+        {
+          avatar: "GA",
+          title: "Growth Auction",
+          badge: "PHP/Laravel",
+          details:
+            "Property & asset e-auction portal. Likely PHP/Laravel, hosted on web server.",
+          tags: [
+            { type: "Type", value: "Auction" },
+            { type: "Tech", value: "PHP" },
+          ],
+          links: [
+            {
+              url: "https://growthauction.com/",
+              text: "View",
+            },
+            {
+              url: "https://growthauction.com/",
+              text: "Copy Link",
+            },
+          ],
+        },
+        {
+          avatar: "SW",
+          title: "Schoolware",
+          badge: "PHP/Laravel",
+          details:
+            "School management system for attendance, student info, classes, reports, etc.",
+          tags: [
+            { type: "Type", value: "School Management" },
+            { type: "Tech", value: "PHP" },
+          ],
+          links: [
+            {
+              url: "https://schoolware.parkhya.co.in/",
+              text: "View",
+            },
+            {
+              url: "https://schoolware.parkhya.co.in/",
+              text: "Copy Link",
+            },
+          ],
+        },
+        {
+          avatar: "BYP",
+          title: "Book Your Pandit",
+          badge: "React",
+          details:
+            "Platform to connect with pandits for religious ceremonies. Search by city, category, type of puja, and buy pooja kits.",
+          tags: [
+            { type: "Type", value: "Religious" },
+            { type: "Tech", value: "React" },
+          ],
+          links: [
+            {
+              url: "https://bookyourpandit.in/",
+              text: "View",
+            },
+            {
+              url: "https://bookyourpandit.in/",
+              text: "Copy Link",
+            },
+          ],
+        },
+        {
+          avatar: "AF",
+          title: "Atal Foundation",
+          badge: "React",
+          details:
+            "NGO for youth empowerment & education. Likely React site, standard hosting.",
+          tags: [
+            { type: "Type", value: "Community" },
+            { type: "Tech", value: "React" },
+          ],
+          links: [
+            {
+              url: "https://atalfoundation.org/",
+              text: "View",
+            },
+            {
+              url: "https://atalfoundation.org/",
+              text: "Copy Link",
+            },
+          ],
+        },
+        {
+          avatar: "TMI",
+          title: "Trade Master Invoice",
+          badge: "React/Next.js",
+          details:
+            "Web invoice management tool for generating, tracking, and managing invoices for businesses.",
+          tags: [
+            { type: "Type", value: "Services" },
+            { type: "Tech", value: "React" },
+          ],
+          links: [
+            {
+              url: "https://trade-master-invoice.vercel.app/",
+              text: "View",
+            },
+            {
+              url: "https://trade-master-invoice.vercel.app/",
+              text: "Copy Link",
+            },
+          ],
+        },
+        {
+          avatar: "HMS",
+          title: "Hospital Management System",
+          badge: "React/Next.js",
+          details:
+            "Hospital management system with super admin, admin, and front desk dashboards.",
+          tags: [
+            { type: "Type", value: "Services" },
+            { type: "Tech", value: "React" },
+          ],
+          links: [
+            {
+              url: "https://hms-super-admin.vercel.app/dashboard",
+              text: "View",
+            },
+            {
+              url: "https://hms-super-admin.vercel.app/dashboard",
+              text: "Copy Link",
+            },
+          ],
+        },
+        {
+          avatar: "TG",
+          title: "Task Grid Landing",
+          badge: "React/Next.js",
+          details:
+            "Landing page for Task Grid, a service booking app connecting customers with trusted professionals.",
+          tags: [
+            { type: "Type", value: "Services" },
+            { type: "Tech", value: "React" },
+          ],
+          links: [
+            {
+              url: "https://task-grid-landing.vercel.app/",
+              text: "View",
+            },
+            {
+              url: "https://task-grid-landing.vercel.app/",
+              text: "Copy Link",
+            },
+          ],
+        },
+        {
+          avatar: "ON",
+          title: "OTT News Web",
+          badge: "React/Next.js",
+          details: "News portal for OTT platform, built with React/Next.js.",
+          tags: [
+            { type: "Type", value: "Media" },
+            { type: "Tech", value: "React" },
+          ],
+          links: [
+            {
+              url: "https://ott-news-web.vercel.app/",
+              text: "View",
+            },
+            {
+              url: "https://ott-news-web.vercel.app/",
+              text: "Copy Link",
+            },
+          ],
+        },
+        {
+          avatar: "DS",
+          title: "DAVKT Staging",
+          badge: "React",
+          details:
+            "DAVKT Staging – Test site for an educational portal. Likely PHP/Laravel backend.",
+          tags: [
+            { type: "Type", value: "Media" },
+            { type: "Tech", value: "React" },
+          ],
+          links: [
+            {
+              url: "https://staging.davkt.org/",
+              text: "View",
+            },
+            {
+              url: "https://staging.davkt.org/",
+              text: "Copy Link",
+            },
+          ],
+        },
+
+        {
+          avatar: "QR",
+          title: "Qroffy",
+          badge: "React",
+          details:
+            "At Qroffy, we believe that everyone deserves access to the best offers without the hassle. Our mission is simple: make everyday outing more affordable and rewarding. Whether you're grabbing a quick bite, shopping for essentials, or planning a vacation, we help you unlock exclusive discounts, cashback, and promo codes from your favorite brands – all in one place.",
+          tags: [
+            { type: "Type", value: "Media" },
+            { type: "Tech", value: "React" },
+          ],
+          links: [
+            {
+              url: "https://web.qroffy.com/login",
+              text: "View",
+            },
+            {
+              url: "https://web.qroffy.com/login",
+              text: "Copy Link",
+            },
+          ],
+        },
+        {
+          avatar: "GL",
+          title: "globeonx",
+          badge: "React",
+          details:
+            "GlobeOnX is an AI-powered financial ecosystem with two parallel systems — decentralized (GlobeOnX) and centralized (GlobeOnX Ce). Users interact using a single coin: IGILLION.",
+          tags: [
+            { type: "Type", value: "Media" },
+            { type: "Tech", value: "React" },
+          ],
+          links: [
+            {
+              url: "https://web.globeonx.com/",
+              text: "View",
+            },
+            {
+              url: "https://web.globeonx.com/",
+              text: "Copy Link",
+            },
+          ],
+        },
+
+        {
+          avatar: "JC",
+          title: "welljanhitchemist",
+          badge: "React",
+          details:
+            "welljanhitchemist  – Test site for an educational portal. Likely PHP/Laravel backend.",
+          tags: [
+            { type: "Type", value: "Media" },
+            { type: "Tech", value: "React" },
+          ],
+          links: [
+            {
+              url: "https://welljanhitchemist.com/",
+              text: "View",
+            },
+            {
+              url: "https://welljanhitchemist.com/",
+              text: "Copy Link",
+            },
+          ],
+        },
+
+        {
+          avatar: "GL",
+          title: "HMS Landing Page",
+          badge: "React",
+          details:
+            "Streamline operations, enhance patient care, and maximize efficiency with our all-in-one cloud platform designed for modern hospitals.",
+          tags: [
+            { type: "Type", value: "Media" },
+            { type: "Tech", value: "React" },
+          ],
+          links: [
+            {
+              url: "https://hms-landing-one.vercel.app/",
+              text: "View",
+            },
+            {
+              url: "https://hms-landing-one.vercel.app/",
+              text: "Copy Link",
+            },
+          ],
+        },
+
+        {
+          avatar: "GL",
+          title: "hms-web-app-frontdesk",
+          badge: "React",
+          details:
+            "Streamline operations, enhance patient care, and maximize efficiency with our all-in-one cloud platform designed for modern hospitals.",
+          tags: [
+            { type: "Type", value: "Media" },
+            { type: "Tech", value: "React" },
+          ],
+          links: [
+            {
+              url: "https://hms-web-app-demo.vercel.app/",
+              text: "View",
+            },
+            {
+              url: "https://hms-web-app-demo.vercel.app/",
+              text: "Copy Link",
+            },
+          ],
+        },
+      ];
+
+      /* SORT ALPHABETICALLY */
+      projectsData.sort((a, b) => a.title.localeCompare(b.title));
+
+      /* RENDER CARDS */
+      function renderProjects(projects) {
+        const grid = document.getElementById("appsGrid");
+        grid.innerHTML = "";
+        projects.forEach((project) => {
+          const card = document.createElement("div");
+          card.className = "card";
+          card.innerHTML = `
+                  <div class="avatar">${project.avatar}</div>
+                  <h3>${project.title} <span class="badge">${
+            project.badge
+          }</span></h3>
+                  <p class="details">${project.details}</p>
+                  <div class="tags">
+                      ${project.tags
+                        .map(
+                          (tag) =>
+                            `<span class="tag">${tag.type}: ${tag.value}</span>`
+                        )
+                        .join("")}
+                  </div>
+                  <div class="btn-group">
+                      ${project.links
+                        .map(
+                          (link) => `
+                          <a class="btn" ${
+                            link.text === "Copy Link"
+                              ? `onclick="copyLink('${link.url}')"`
+                              : `href="${link.url}" target="_blank"`
+                          }>${link.text}</a>
+                      `
+                        )
+                        .join("")}
+                  </div>
+              `;
+          grid.appendChild(card);
+        });
+      }
+
+      function copyLink(url) {
+        navigator.clipboard.writeText(url);
+        alert("Link copied!");
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        const search = document.getElementById("search");
+        const filterTech = document.getElementById("filter-tech");
+        const filterType = document.getElementById("filter-type");
+
+        function filterCards() {
+          const searchTerm = search.value.toLowerCase();
+          const techTerm = filterTech.value;
+          const typeTerm = filterType.value;
+
+          const filtered = projectsData.filter((project) => {
+            const title = project.title.toLowerCase();
+            const tech = project.badge;
+            const type = project.tags.find((t) => t.type === "Type").value;
+
+            return (
+              (title.includes(searchTerm) || searchTerm === "") &&
+              (techTerm === "" || tech.includes(techTerm)) &&
+              (typeTerm === "" || type.includes(typeTerm))
+            );
+          });
+
+          renderProjects(filtered);
+        }
+
+        search.addEventListener("input", filterCards);
+        filterTech.addEventListener("change", filterCards);
+        filterType.addEventListener("change", filterCards);
+
+        // Initial render
+        renderProjects(projectsData);
+      });
+    </script>
+  </body>
+</html>
