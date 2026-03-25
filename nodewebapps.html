@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -587,6 +587,27 @@
             },
           ],
         },
+        {
+          avatar: "FO",
+          title: "Foodify",
+          badge: "React",
+          details:
+            "The Foodify Web App is a modern, high-performance frontend for a food delivery platform. Built with React 19 and Vite, it provides a seamless experience for users to discover restaurants and manage their orders.",
+          tags: [
+            { type: "Type", value: "Services" },
+            { type: "Tech", value: "React" },
+          ],
+          links: [
+            {
+              url: "  https://foodify-web-app-seven.vercel.app/",
+              text: "View",
+            },
+            {
+              url: "  https://foodify-web-app-seven.vercel.app/",
+              text: "Copy Link",
+            },
+          ],
+        },
       ];
 
       /* SORT ALPHABETICALLY */
@@ -602,14 +623,14 @@
           card.innerHTML = `
                   <div class="avatar">${project.avatar}</div>
                   <h3>${project.title} <span class="badge">${
-            project.badge
-          }</span></h3>
+                    project.badge
+                  }</span></h3>
                   <p class="details">${project.details}</p>
                   <div class="tags">
                       ${project.tags
                         .map(
                           (tag) =>
-                            `<span class="tag">${tag.type}: ${tag.value}</span>`
+                            `<span class="tag">${tag.type}: ${tag.value}</span>`,
                         )
                         .join("")}
                   </div>
@@ -622,7 +643,7 @@
                               ? `onclick="copyLink('${link.url}')"`
                               : `href="${link.url}" target="_blank"`
                           }>${link.text}</a>
-                      `
+                      `,
                         )
                         .join("")}
                   </div>
